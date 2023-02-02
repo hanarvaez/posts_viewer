@@ -1,8 +1,7 @@
 package co.com.monkeymobile.post_viewer.presentation.splash
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import co.com.monkeymobile.post_viewer.R
 import co.com.monkeymobile.post_viewer.presentation.post_list.PostListActivity

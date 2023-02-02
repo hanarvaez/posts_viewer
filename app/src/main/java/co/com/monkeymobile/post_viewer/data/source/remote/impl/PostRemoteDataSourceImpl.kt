@@ -6,7 +6,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class PostRemoteDataSourceImpl @Inject constructor(): PostRemoteDataSource{
+class PostRemoteDataSourceImpl @Inject constructor() : PostRemoteDataSource {
 
     override suspend fun fetchPostsList() = NetworkModule.getApiService().fetchPostsList()
 

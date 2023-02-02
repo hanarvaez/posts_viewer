@@ -1,10 +1,10 @@
 package co.com.monkeymobile.post_viewer.data.source.remote
 
-import co.com.monkeymobile.post_viewer.data.source.remote.response.PostResponse
+import co.com.monkeymobile.post_viewer.data.source.remote.response.PostBackendResponse
 
 interface PostRemoteDataSource {
 
-    suspend fun fetchPostsList(): List<PostResponse>
+    suspend fun fetchPostsList(): List<PostBackendResponse>
 
-    suspend fun fetchPost(postId: Int): PostResponse
+    suspend fun fetchPost(postId: Int): PostBackendResponse
 }

@@ -2,16 +2,21 @@ package co.com.monkeymobile.post_viewer.data.repository
 
 import co.com.monkeymobile.post_viewer.data.source.local.PostLocalDataSource
 import co.com.monkeymobile.post_viewer.data.source.remote.PostRemoteDataSource
+import co.com.monkeymobile.post_viewer.data.source.remote.response.toPost
+import co.com.monkeymobile.post_viewer.domain.model.Post
 import co.com.monkeymobile.post_viewer.domain.repository.PostRepository
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class PostRepositoryImpl(
+@Singleton
+class PostRepositoryImpl @Inject constructor(
     private val localDataSource: PostLocalDataSource,
     private val remoteDataSource: PostRemoteDataSource
 ) : PostRepository {
 
-    override suspend fun fetchPostsList() {}
+    override suspend fun fetchPostsList() = remoteDataSource.fetchPostsList().map { it.toPost() }
 
-    override suspend fun fetchPost(postId: Int) {}
+    override suspend fun fetchPost(postId: Int) = remoteDataSource.fetchPost(postId).toPost()
 
     override suspend fun markPostAsFavorite(postId: Int) {}
 

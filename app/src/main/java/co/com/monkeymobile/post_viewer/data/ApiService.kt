@@ -1,6 +1,6 @@
 package co.com.monkeymobile.post_viewer.data
 
-import co.com.monkeymobile.post_viewer.data.source.remote.response.PostResponse
+import co.com.monkeymobile.post_viewer.data.source.remote.response.PostBackendResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -13,8 +13,8 @@ object ApiUrl {
 interface ApiService {
 
     @GET(ApiUrl.POST_PARTICLE)
-    suspend fun fetchPostsList(): List<PostResponse>
+    suspend fun fetchPostsList(): List<PostBackendResponse>
 
     @GET("${ApiUrl.POST_PARTICLE}{postId}")
-    suspend fun fetchPost(@Path("postId") postId: Int): PostResponse
+    suspend fun fetchPost(@Path("postId") postId: Int): PostBackendResponse
 }

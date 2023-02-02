@@ -20,6 +20,7 @@ object Versions {
     const val splashVersion = "1.0.0"
     const val hiltVersion = "2.44"
     const val retrofitVersion = "2.9.0"
+    const val loggingInterceptorVersion = "4.10.0"
 }
 
 object Dependencies {
@@ -58,5 +59,8 @@ object Dependencies {
     // Retrofit
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
     const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofitVersion}"
+
+    // Http Logging Interceptor
+    const val httpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptorVersion}"
 
 }

@@ -2,11 +2,14 @@ package co.com.monkeymobile.post_viewer.di
 
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Qualifier
 
 @Module
+@InstallIn(ActivityComponent::class)
 class CoroutinesModule {
 
     @DefaultDispatcher

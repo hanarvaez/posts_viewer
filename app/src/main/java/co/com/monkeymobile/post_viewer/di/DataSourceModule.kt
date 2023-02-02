@@ -7,11 +7,11 @@ import co.com.monkeymobile.post_viewer.data.source.remote.impl.PostRemoteDataSou
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.components.SingletonComponent
 
 @Module
-@InstallIn(ActivityComponent::class)
-abstract class PostModule {
+@InstallIn(SingletonComponent::class)
+abstract class DataSourceModule {
 
     @Binds
     abstract fun providePostRemoteDataSource(source: PostRemoteDataSourceImpl): PostRemoteDataSource

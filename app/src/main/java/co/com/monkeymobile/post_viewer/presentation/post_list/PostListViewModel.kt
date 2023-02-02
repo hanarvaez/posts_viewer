@@ -1,9 +1,18 @@
 package co.com.monkeymobile.post_viewer.presentation.post_list
 
+import co.com.monkeymobile.post_viewer.di.DefaultDispatcher
+import co.com.monkeymobile.post_viewer.domain.use_case.GetPostListUseCase
+import co.com.monkeymobile.post_viewer.domain.use_case.GetPostUseCase
 import co.com.monkeymobile.post_viewer.presentation.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
+import javax.inject.Inject
 
-class PostListViewModel(coroutineDispatcher: CoroutineDispatcher) :
+@HiltViewModel
+class PostListViewModel @Inject constructor (
+    private val getPostListUseCase: GetPostListUseCase,
+    private val getPostUseCase: GetPostUseCase,
+    @DefaultDispatcher coroutineDispatcher: CoroutineDispatcher) :
     BaseViewModel<PostListViewState, PostListViewEvent>(coroutineDispatcher) {
 
     override fun getInitialState(): PostListViewState = PostListViewState.Initial

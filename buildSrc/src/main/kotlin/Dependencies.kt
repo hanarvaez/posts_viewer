@@ -11,12 +11,14 @@ object Versions {
     const val coreKtxVersion = "1.9.0"
     const val appCompatVersion = "1.6.0"
     const val materialVersion = "1.8.0"
+    const val constraintLayoutVersion = "2.1.3"
     const val jUnitVersion = "4.13.2"
     const val jUnitExtVersion = "1.1.5"
     const val espressoCoreVersion = "3.5.1"
     const val coroutinesVersion = "1.6.1"
     const val lifecycleVersion = "2.5.1"
     const val splashVersion = "1.0.0"
+    const val hiltVersion = "2.44"
 }
 
 object Dependencies {
@@ -28,6 +30,9 @@ object Dependencies {
 
     // Material
     const val material = "com.google.android.material:material:${Versions.materialVersion}"
+
+    // Constraint Layout
+    const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayoutVersion}"
 
     // Tests
     const val jUnit = "junit:junit:${Versions.jUnitVersion}"
@@ -44,5 +49,9 @@ object Dependencies {
 
     // Splash
     const val splash = "androidx.core:core-splashscreen:${Versions.splashVersion}"
+
+    // Hilt
+    const val hilt = "com.google.dagger:hilt-android:${Versions.hiltVersion}"
+    const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hiltVersion}"
 
 }

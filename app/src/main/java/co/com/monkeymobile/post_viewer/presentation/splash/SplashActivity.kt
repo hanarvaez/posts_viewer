@@ -9,15 +9,14 @@ import co.com.monkeymobile.post_viewer.presentation.post_list.PostListActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        val splashScreen = installSplashScreen()
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
     }
 
     override fun onResume() {
         super.onResume()
-        startActivity(Intent(this, PostListActivity::class.java))
+        startActivity(PostListActivity.getIntent(this))
         finish()
     }
 }

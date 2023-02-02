@@ -16,6 +16,7 @@ object Versions {
     const val espressoCoreVersion = "3.5.1"
     const val coroutinesVersion = "1.6.1"
     const val lifecycleVersion = "2.5.1"
+    const val splashVersion = "1.0.0"
 }
 
 object Dependencies {
@@ -40,4 +41,8 @@ object Dependencies {
     const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}"
     const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleVersion}"
     const val lifecycleData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycleVersion}"
+
+    // Splash
+    const val splash = "androidx.core:core-splashscreen:${Versions.splashVersion}"
+
 }

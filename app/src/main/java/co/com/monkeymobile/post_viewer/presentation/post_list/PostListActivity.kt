@@ -5,7 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import co.com.monkeymobile.post_viewer.R
 import co.com.monkeymobile.post_viewer.presentation.BaseActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, PostListViewEvent>() {
 
     companion object {

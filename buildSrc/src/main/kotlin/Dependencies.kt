@@ -19,6 +19,7 @@ object Versions {
     const val lifecycleVersion = "2.5.1"
     const val splashVersion = "1.0.0"
     const val hiltVersion = "2.44"
+    const val retrofitVersion = "2.9.0"
 }
 
 object Dependencies {
@@ -53,5 +54,9 @@ object Dependencies {
     // Hilt
     const val hilt = "com.google.dagger:hilt-android:${Versions.hiltVersion}"
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hiltVersion}"
+
+    // Retrofit
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
+    const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofitVersion}"
 
 }

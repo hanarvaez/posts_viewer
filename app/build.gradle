@@ -55,6 +55,8 @@ dependencies {
     implementation(Dependencies.splash)
     implementation(Dependencies.hilt)
     kapt(Dependencies.hiltCompiler)
+    implementation(Dependencies.retrofit)
+    implementation(Dependencies.retrofitConverterGson)
 }
 
 kapt {

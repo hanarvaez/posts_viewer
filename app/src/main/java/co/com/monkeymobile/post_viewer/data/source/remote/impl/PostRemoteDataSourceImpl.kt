@@ -1,7 +1,7 @@
 package co.com.monkeymobile.post_viewer.data.source.remote.impl
 
 import co.com.monkeymobile.post_viewer.data.source.remote.PostRemoteDataSource
-import co.com.monkeymobile.post_viewer.presentation.di.NetworkModule
+import co.com.monkeymobile.post_viewer.di.NetworkModule
 import javax.inject.Inject
 import javax.inject.Singleton
 

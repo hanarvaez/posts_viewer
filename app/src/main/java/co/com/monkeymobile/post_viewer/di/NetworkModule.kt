@@ -1,4 +1,4 @@
-package co.com.monkeymobile.post_viewer.presentation.di
+package co.com.monkeymobile.post_viewer.di
 
 import co.com.monkeymobile.post_viewer.data.ApiService
 import co.com.monkeymobile.post_viewer.data.ApiUrl

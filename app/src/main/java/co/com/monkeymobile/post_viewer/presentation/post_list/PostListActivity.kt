@@ -40,7 +40,6 @@ class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, Post
 
     private fun buildInitialState() {
         adapter = PostAdapter(this)
-        adapter.submitList(emptyList())
         binding.postsRecyclerView.adapter = adapter
         binding.refreshButton.setOnClickListener { dispatchEvent(PostListViewEvent.Refresh) }
 

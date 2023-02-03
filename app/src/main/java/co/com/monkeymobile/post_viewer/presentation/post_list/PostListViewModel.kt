@@ -21,6 +21,7 @@ class PostListViewModel @Inject constructor(
     override suspend fun processEvent(event: PostListViewEvent) {
         when (event) {
             is PostListViewEvent.Initialize -> initializeEvent()
+            is PostListViewEvent.Refresh -> refreshEvent()
             is PostListViewEvent.MarkPostAsFavorite -> markPostAsFavoriteEvent(event.postId)
             is PostListViewEvent.UnmarkPostAsFavorite -> unmarkPostAsFavoriteEvent(event.postId)
             is PostListViewEvent.SeePostDetail -> seePostDetailEvent(event.postId)
@@ -28,10 +29,23 @@ class PostListViewModel @Inject constructor(
     }
 
     private suspend fun initializeEvent() {
-        setState(PostListViewState.Loading)
-        val result = getPostListUseCase(NoParams)
+        fetchPostsList()
+    }
 
-        when (result) {
+    private suspend fun refreshEvent() {
+        fetchPostsList()
+    }
+
+    private suspend fun markPostAsFavoriteEvent(postId: Int) {}
+
+    private suspend fun unmarkPostAsFavoriteEvent(postId: Int) {}
+
+    private suspend fun seePostDetailEvent(postId: Int) {}
+
+    private suspend fun fetchPostsList() {
+        setState(PostListViewState.Loading)
+
+        when (val result = getPostListUseCase(NoParams)) {
             is Result.Success -> {
             }
 
@@ -40,10 +54,4 @@ class PostListViewModel @Inject constructor(
 
         setState(PostListViewState.Content)
     }
-
-    private suspend fun markPostAsFavoriteEvent(postId: Int) {}
-
-    private suspend fun unmarkPostAsFavoriteEvent(postId: Int) {}
-
-    private suspend fun seePostDetailEvent(postId: Int) {}
 }

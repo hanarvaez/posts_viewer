@@ -8,6 +8,10 @@ sealed class PostListViewEvent : ViewEvent {
         override fun getName() = "PostList.Initialize"
     }
 
+    object Refresh : PostListViewEvent() {
+        override fun getName(): String = "PostList.Refresh"
+    }
+
     class MarkPostAsFavorite(val postId: Int) : PostListViewEvent() {
         override fun getName() = "PostList.MarkPostAsFavorite"
     }

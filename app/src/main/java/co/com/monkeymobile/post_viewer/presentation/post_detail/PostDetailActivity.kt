@@ -15,10 +15,12 @@ class PostDetailActivity : AppCompatActivity() {
     companion object {
 
         private const val EXTRA_POST_ID = "postId"
+        private const val EXTRA_USER_ID = "userId"
 
-        fun getIntent(context: Context, postId: Int) =
+        fun getIntent(context: Context, postId: Int, userId: Int) =
             Intent(context, PostDetailActivity::class.java).apply {
                 putExtra(EXTRA_POST_ID, postId)
+                putExtra(EXTRA_USER_ID, userId)
             }
     }
 
@@ -31,6 +33,7 @@ class PostDetailActivity : AppCompatActivity() {
         setContentView(view)
 
         val postId = intent.getIntExtra(EXTRA_POST_ID, 0)
+        val userId = intent.getIntExtra(EXTRA_USER_ID, 0)
         addFragment(PostDetailFragment.newInstance(postId))
     }
 

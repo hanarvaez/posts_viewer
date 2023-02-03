@@ -73,6 +73,6 @@ class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, Post
     }
 
     override fun onPostClicked(post: Post) {
-        startActivity(PostDetailActivity.getIntent(this, post.id))
+        startActivity(PostDetailActivity.getIntent(this, post.id, post.userId))
     }
 }

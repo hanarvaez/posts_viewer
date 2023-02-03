@@ -4,25 +4,59 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import co.com.monkeymobile.post_viewer.R
+import androidx.fragment.app.viewModels
+import co.com.monkeymobile.post_viewer.databinding.FragmentUserDetailsBinding
+import co.com.monkeymobile.post_viewer.presentation.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-class UserDetailsFragment : Fragment() {
+@AndroidEntryPoint
+class UserDetailsFragment :
+    BaseFragment<UserDetailsViewModel, UserDetailsViewState, UserDetailsViewEvent>() {
 
     companion object {
 
-        fun newInstance() = UserDetailsFragment()
+        private const val EXTRA_USER_ID = "userId"
+
+        fun newInstance(userId: Int) = UserDetailsFragment().apply {
+            arguments = Bundle().apply { putInt(EXTRA_USER_ID, userId) }
+        }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    override val viewModel: UserDetailsViewModel by viewModels()
+    private lateinit var binding: FragmentUserDetailsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_details, container, false)
+        binding = FragmentUserDetailsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun buildState(state: UserDetailsViewState) {
+        when (state) {
+            UserDetailsViewState.Initial -> buildInitialState()
+            UserDetailsViewState.Loading -> buildLoadingState()
+            is UserDetailsViewState.Content -> buildContentState(state)
+            UserDetailsViewState.Error -> buildErrorState()
+        }
+    }
+
+    private fun buildInitialState() {
+        val userId = arguments?.getInt(EXTRA_USER_ID, 0) ?: 0
+
+        dispatchEvent(UserDetailsViewEvent.Initialize(userId))
+    }
+
+    private fun buildLoadingState() {
+
+    }
+
+    private fun buildContentState(state: UserDetailsViewState.Content) {
+
+    }
+
+    private fun buildErrorState() {
+
     }
 }

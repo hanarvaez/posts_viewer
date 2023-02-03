@@ -4,7 +4,7 @@ import co.com.monkeymobile.post_viewer.presentation.ViewEvent
 
 sealed class PostDetailViewEvent : ViewEvent {
 
-    object Initialize : PostDetailViewEvent() {
+    class Initialize(val postId: Int) : PostDetailViewEvent() {
         override fun getName() = "PostDetail.Initialize"
     }
 

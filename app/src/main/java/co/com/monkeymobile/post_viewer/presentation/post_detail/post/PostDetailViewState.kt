@@ -13,7 +13,7 @@ sealed class PostDetailViewState : ViewState {
         override fun getName(): String = "PostDetail.Loading"
     }
 
-    class Content(val posts: List<Post>) : PostDetailViewState() {
+    class Content(val post: Post) : PostDetailViewState() {
         override fun getName(): String = "PostDetail.Content"
     }
 }

@@ -15,7 +15,11 @@ class PostDetailFragment :
 
     companion object {
 
-        fun newInstance() = PostDetailFragment()
+        private const val EXTRA_POST_ID = "postId"
+
+        fun newInstance(postId: Int) = PostDetailFragment().apply {
+            arguments = Bundle().apply { putInt(EXTRA_POST_ID, postId) }
+        }
     }
 
     override val viewModel: PostDetailViewModel by viewModels()

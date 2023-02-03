@@ -1,6 +1,6 @@
 package co.com.monkeymobile.post_viewer.presentation.post_detail.user
 
-import co.com.monkeymobile.post_viewer.domain.model.Post
+import co.com.monkeymobile.post_viewer.domain.model.User
 import co.com.monkeymobile.post_viewer.presentation.ViewState
 
 sealed class UserDetailsViewState : ViewState {
@@ -13,7 +13,7 @@ sealed class UserDetailsViewState : ViewState {
         override fun getName(): String = "PostDetailUser.Loading"
     }
 
-    class Content(val post: Post) : UserDetailsViewState() {
+    class Content(val user: User) : UserDetailsViewState() {
         override fun getName(): String = "PostDetailUser.Content"
     }
 

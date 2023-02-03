@@ -13,6 +13,6 @@ sealed class PostDetailViewEvent : ViewEvent {
     }
 
     class UnmarkPostAsFavorite(val postId: Int) : PostDetailViewEvent() {
-        override fun getName() = "PostPostDetailList.UnmarkPostAsFavorite"
+        override fun getName() = "PostDetail.UnmarkPostAsFavorite"
     }
 }

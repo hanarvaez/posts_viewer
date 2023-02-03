@@ -1,8 +1,11 @@
 package co.com.monkeymobile.post_viewer.data.source.remote.response
 
 import android.os.Parcelable
+import co.com.monkeymobile.post_viewer.domain.model.Address
+import co.com.monkeymobile.post_viewer.domain.model.Company
+import co.com.monkeymobile.post_viewer.domain.model.Geolocalization
+import co.com.monkeymobile.post_viewer.domain.model.User
 import kotlinx.parcelize.Parcelize
-
 
 @Parcelize
 data class UserBackendResponse(
@@ -37,3 +40,26 @@ data class CompanyBackendResponse(
     val catchPhrase: String,
     val bs: String
 ) : Parcelable
+
+fun UserBackendResponse.toUser() = User(
+    id,
+    name,
+    username,
+    email,
+    address.toAddress(),
+    phone,
+    website,
+    company.toCompany()
+)
+
+fun AddressBackendResponse.toAddress() = Address(
+    street,
+    suite,
+    city,
+    zipcode,
+    geo.toGeolocalization()
+)
+
+fun GeolocalizationBackendResponse.toGeolocalization() = Geolocalization(lat, lng)
+
+fun CompanyBackendResponse.toCompany() = Company(name, catchPhrase, bs)

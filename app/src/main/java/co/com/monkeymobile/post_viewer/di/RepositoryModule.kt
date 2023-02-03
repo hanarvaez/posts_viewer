@@ -1,7 +1,9 @@
 package co.com.monkeymobile.post_viewer.di
 
+import co.com.monkeymobile.post_viewer.data.repository.CommentRepositoryImpl
 import co.com.monkeymobile.post_viewer.data.repository.PostRepositoryImpl
 import co.com.monkeymobile.post_viewer.data.repository.UserRepositoryImpl
+import co.com.monkeymobile.post_viewer.domain.repository.CommentRepository
 import co.com.monkeymobile.post_viewer.domain.repository.PostRepository
 import co.com.monkeymobile.post_viewer.domain.repository.UserRepository
 import dagger.Binds
@@ -18,4 +20,7 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindUserRepository(userRepositoryImpl: UserRepositoryImpl): UserRepository
+
+    @Binds
+    abstract fun bindCommentRepository(commentRepositoryImpl: CommentRepositoryImpl): CommentRepository
 }

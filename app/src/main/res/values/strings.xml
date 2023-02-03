@@ -4,4 +4,13 @@
     <string name="text_no_data_found">No data found</string>
     <string name="text_post_title">Post Title:</string>
     <string name="text_post_description">Post Description:</string>
+    <string name="text_author_information">Author information</string>
+    <string name="text_name">Name</string>
+    <string name="text_username">Username</string>
+    <string name="text_email">email</string>
+    <string name="text_address">Address</string>
+    <string name="text_zip_code">Zip Code</string>
+    <string name="text_phone">Phone</string>
+    <string name="text_website">Website</string>
+    <string name="text_company">Company</string>
 </resources>

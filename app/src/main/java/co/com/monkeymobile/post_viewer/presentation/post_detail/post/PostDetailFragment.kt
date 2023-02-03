@@ -4,25 +4,48 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import co.com.monkeymobile.post_viewer.R
+import androidx.fragment.app.viewModels
+import co.com.monkeymobile.post_viewer.databinding.FragmentPostDetailBinding
+import co.com.monkeymobile.post_viewer.presentation.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-class PostDetailFragment : Fragment() {
+@AndroidEntryPoint
+class PostDetailFragment :
+    BaseFragment<PostDetailViewModel, PostDetailViewState, PostDetailViewEvent>() {
 
     companion object {
 
         fun newInstance() = PostDetailFragment()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    override val viewModel: PostDetailViewModel by viewModels()
+    private lateinit var binding: FragmentPostDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_post_detail, container, false)
+        binding = FragmentPostDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun buildState(state: PostDetailViewState) {
+        when (state) {
+            PostDetailViewState.Initial -> buildInitialState()
+            PostDetailViewState.Loading -> buildLoadingState()
+            is PostDetailViewState.Content -> buildContentState(state)
+        }
+    }
+
+    private fun buildInitialState() {
+
+    }
+
+    private fun buildLoadingState() {
+
+    }
+
+    private fun buildContentState(state: PostDetailViewState.Content) {
+
     }
 }

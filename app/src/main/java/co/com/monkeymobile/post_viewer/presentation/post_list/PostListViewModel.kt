@@ -2,18 +2,18 @@ package co.com.monkeymobile.post_viewer.presentation.post_list
 
 import co.com.monkeymobile.post_viewer.di.DefaultDispatcher
 import co.com.monkeymobile.post_viewer.domain.use_case.GetPostListUseCase
-import co.com.monkeymobile.post_viewer.domain.use_case.GetPostUseCase
 import co.com.monkeymobile.post_viewer.domain.use_case.NoParams
+import co.com.monkeymobile.post_viewer.domain.use_case.Result
 import co.com.monkeymobile.post_viewer.presentation.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
 @HiltViewModel
-class PostListViewModel @Inject constructor (
+class PostListViewModel @Inject constructor(
     private val getPostListUseCase: GetPostListUseCase,
-    private val getPostUseCase: GetPostUseCase,
-    @DefaultDispatcher coroutineDispatcher: CoroutineDispatcher) :
+    @DefaultDispatcher coroutineDispatcher: CoroutineDispatcher
+) :
     BaseViewModel<PostListViewState, PostListViewEvent>(coroutineDispatcher) {
 
     override fun getInitialState(): PostListViewState = PostListViewState.Initial
@@ -28,12 +28,22 @@ class PostListViewModel @Inject constructor (
     }
 
     private suspend fun initializeEvent() {
-        getPostListUseCase(NoParams)
+        setState(PostListViewState.Loading)
+        val result = getPostListUseCase(NoParams)
+
+        when (result) {
+            is Result.Success -> {
+            }
+
+            else -> toastMessage.postValue(result.toString())
+        }
+
+        setState(PostListViewState.Content)
     }
 
-    private fun markPostAsFavoriteEvent(postId: Int) {}
+    private suspend fun markPostAsFavoriteEvent(postId: Int) {}
 
-    private fun unmarkPostAsFavoriteEvent(postId: Int) {}
+    private suspend fun unmarkPostAsFavoriteEvent(postId: Int) {}
 
-    private fun seePostDetailEvent(postId: Int) {}
+    private suspend fun seePostDetailEvent(postId: Int) {}
 }

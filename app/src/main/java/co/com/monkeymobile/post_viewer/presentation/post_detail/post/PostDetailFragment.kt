@@ -52,9 +52,11 @@ class PostDetailFragment :
         with(binding) {
             labelPostTitle.visibility = View.INVISIBLE
             labelPostDescription.visibility = View.INVISIBLE
+
             postTitle.visibility = View.INVISIBLE
             postBody.visibility = View.INVISIBLE
 
+            errorMessage.visibility = View.GONE
             progress.visibility = View.VISIBLE
         }
     }
@@ -70,11 +72,22 @@ class PostDetailFragment :
             postBody.visibility = View.VISIBLE
             postBody.text = state.post.body
 
+            errorMessage.visibility = View.GONE
             progress.visibility = View.GONE
         }
     }
 
     private fun buildErrorState() {
+        with(binding) {
+            labelPostTitle.visibility = View.INVISIBLE
+            labelPostDescription.visibility = View.INVISIBLE
+
+            postTitle.visibility = View.INVISIBLE
+            postBody.visibility = View.INVISIBLE
+
+            errorMessage.visibility = View.VISIBLE
+            progress.visibility = View.GONE
+        }
 
     }
 }

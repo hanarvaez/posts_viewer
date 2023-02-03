@@ -53,15 +53,14 @@ dependencies {
     implementation(Dependencies.lifecycleViewModel)
     implementation(Dependencies.lifecycleRuntime)
     implementation(Dependencies.lifecycleData)
+    implementation(Dependencies.activityKtx)
     implementation(Dependencies.splash)
     implementation(Dependencies.hilt)
+    kapt(Dependencies.hiltAndroidCompiler)
     kapt(Dependencies.hiltCompiler)
     implementation(Dependencies.retrofit)
     implementation(Dependencies.retrofitConverterGson)
     implementation(Dependencies.httpLoggingInterceptor)
-
-    kapt 'androidx.hilt:hilt-compiler:1.0.0'
-    implementation 'androidx.activity:activity-ktx:1.6.1'
 }
 
 kapt {

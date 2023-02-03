@@ -17,8 +17,10 @@ object Versions {
     const val espressoCoreVersion = "3.5.1"
     const val coroutinesVersion = "1.6.1"
     const val lifecycleVersion = "2.5.1"
+    const val activityKtxVersion = "1.6.1"
     const val splashVersion = "1.0.0"
     const val hiltVersion = "2.44"
+    const val hiltCompilerVersion = "1.0.0"
     const val retrofitVersion = "2.9.0"
     const val loggingInterceptorVersion = "4.10.0"
 }
@@ -48,13 +50,15 @@ object Dependencies {
     const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}"
     const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleVersion}"
     const val lifecycleData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycleVersion}"
+    const val activityKtx = "androidx.activity:activity-ktx:${Versions.activityKtxVersion}"
 
     // Splash
     const val splash = "androidx.core:core-splashscreen:${Versions.splashVersion}"
 
     // Hilt
     const val hilt = "com.google.dagger:hilt-android:${Versions.hiltVersion}"
-    const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hiltVersion}"
+    const val hiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hiltVersion}"
+    const val hiltCompiler = "androidx.hilt:hilt-compiler:${Versions.hiltCompilerVersion}"
 
     // Retrofit
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
@@ -62,5 +66,4 @@ object Dependencies {
 
     // Http Logging Interceptor
     const val httpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptorVersion}"
-
 }

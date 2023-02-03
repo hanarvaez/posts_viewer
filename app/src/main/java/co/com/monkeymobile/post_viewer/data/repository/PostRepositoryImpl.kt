@@ -3,7 +3,6 @@ package co.com.monkeymobile.post_viewer.data.repository
 import co.com.monkeymobile.post_viewer.data.source.local.PostLocalDataSource
 import co.com.monkeymobile.post_viewer.data.source.remote.PostRemoteDataSource
 import co.com.monkeymobile.post_viewer.data.source.remote.response.toPost
-import co.com.monkeymobile.post_viewer.domain.model.Post
 import co.com.monkeymobile.post_viewer.domain.repository.PostRepository
 import javax.inject.Inject
 import javax.inject.Singleton

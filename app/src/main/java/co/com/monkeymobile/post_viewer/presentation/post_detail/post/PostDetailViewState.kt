@@ -16,4 +16,8 @@ sealed class PostDetailViewState : ViewState {
     class Content(val post: Post) : PostDetailViewState() {
         override fun getName(): String = "PostDetail.Content"
     }
+
+    object Error: PostDetailViewState() {
+        override fun getName() = "PostDetail.Error"
+    }
 }

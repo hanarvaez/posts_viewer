@@ -38,18 +38,43 @@ class PostDetailFragment :
             PostDetailViewState.Initial -> buildInitialState()
             PostDetailViewState.Loading -> buildLoadingState()
             is PostDetailViewState.Content -> buildContentState(state)
+            PostDetailViewState.Error -> buildErrorState()
         }
     }
 
     private fun buildInitialState() {
+        val postId = arguments?.getInt(EXTRA_POST_ID, 0) ?: 0
 
+        dispatchEvent(PostDetailViewEvent.Initialize(postId))
     }
 
     private fun buildLoadingState() {
+        with(binding) {
+            labelPostTitle.visibility = View.INVISIBLE
+            labelPostDescription.visibility = View.INVISIBLE
+            postTitle.visibility = View.INVISIBLE
+            postBody.visibility = View.INVISIBLE
 
+            progress.visibility = View.VISIBLE
+        }
     }
 
     private fun buildContentState(state: PostDetailViewState.Content) {
+        with(binding) {
+            labelPostTitle.visibility = View.VISIBLE
+            labelPostDescription.visibility = View.VISIBLE
+
+            postTitle.visibility = View.VISIBLE
+            postTitle.text = state.post.title
+
+            postBody.visibility = View.VISIBLE
+            postBody.text = state.post.body
+
+            progress.visibility = View.GONE
+        }
+    }
+
+    private fun buildErrorState() {
 
     }
 }

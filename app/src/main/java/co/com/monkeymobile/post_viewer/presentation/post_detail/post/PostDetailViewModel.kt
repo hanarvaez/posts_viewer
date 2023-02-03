@@ -1,7 +1,7 @@
 package co.com.monkeymobile.post_viewer.presentation.post_detail.post
 
 import co.com.monkeymobile.post_viewer.di.DefaultDispatcher
-import co.com.monkeymobile.post_viewer.domain.use_case.GetPostUseCase
+import co.com.monkeymobile.post_viewer.domain.use_case.*
 import co.com.monkeymobile.post_viewer.presentation.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -23,7 +23,13 @@ class PostDetailViewModel @Inject constructor(
         }
     }
 
-    private suspend fun initializeEvent(event: PostDetailViewEvent.Initialize) {}
+    private suspend fun initializeEvent(event: PostDetailViewEvent.Initialize) {
+        setState(PostDetailViewState.Loading)
+        when (val result = getPostUseCase(GetPostUseCaseParams(event.postId))) {
+            is Result.Success -> setState(PostDetailViewState.Content(result.data.post))
+            is Result.Error -> setState(PostDetailViewState.Error)
+        }
+    }
 
     private suspend fun markPostAsFavoriteEvent(event: PostDetailViewEvent.MarkPostAsFavorite) {}
 

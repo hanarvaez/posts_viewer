@@ -3,6 +3,7 @@ package co.com.monkeymobile.post_viewer.presentation.post_list
 import co.com.monkeymobile.post_viewer.di.DefaultDispatcher
 import co.com.monkeymobile.post_viewer.domain.use_case.GetPostListUseCase
 import co.com.monkeymobile.post_viewer.domain.use_case.GetPostUseCase
+import co.com.monkeymobile.post_viewer.domain.use_case.NoParams
 import co.com.monkeymobile.post_viewer.presentation.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -26,7 +27,9 @@ class PostListViewModel @Inject constructor (
         }
     }
 
-    private fun initializeEvent() {}
+    private suspend fun initializeEvent() {
+        getPostListUseCase(NoParams)
+    }
 
     private fun markPostAsFavoriteEvent(postId: Int) {}
 

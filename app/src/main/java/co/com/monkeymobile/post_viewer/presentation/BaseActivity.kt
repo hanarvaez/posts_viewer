@@ -10,7 +10,7 @@ import co.com.monkeymobile.post_viewer.util.TAG_VIEW_UPDATE
 
 abstract class BaseActivity<ViewModel: BaseViewModel<State, Event>, State: ViewState, Event: ViewEvent> : AppCompatActivity() {
 
-    lateinit var viewModel: ViewModel
+    abstract val viewModel: ViewModel
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)

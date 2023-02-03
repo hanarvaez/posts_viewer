@@ -3,7 +3,9 @@ package co.com.monkeymobile.post_viewer.di
 import co.com.monkeymobile.post_viewer.data.source.local.PostLocalDataSource
 import co.com.monkeymobile.post_viewer.data.source.local.impl.PostLocalDataSourceImpl
 import co.com.monkeymobile.post_viewer.data.source.remote.PostRemoteDataSource
+import co.com.monkeymobile.post_viewer.data.source.remote.UserRemoteDataSource
 import co.com.monkeymobile.post_viewer.data.source.remote.impl.PostRemoteDataSourceImpl
+import co.com.monkeymobile.post_viewer.data.source.remote.impl.UserRemoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -18,4 +20,7 @@ abstract class DataSourceModule {
 
     @Binds
     abstract fun providePostLocalDataSource(source: PostLocalDataSourceImpl): PostLocalDataSource
+
+    @Binds
+    abstract fun providesUserRemoteDataSource(source: UserRemoteDataSourceImpl): UserRemoteDataSource
 }

@@ -6,6 +6,29 @@
     android:layout_height="wrap_content"
     tools:context=".presentation.post_detail.user.UserDetailsFragment">
 
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelTitle" />
+
+    <TextView
+        android:id="@+id/errorMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_no_data_found"
+        android:textSize="30sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelTitle" />
+
     <!-- Label fields -->
     <TextView
         android:id="@+id/labelTitle"
@@ -28,6 +51,7 @@
         android:text="@string/text_name"
         android:textSize="15sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/labelTitle" />
 
@@ -39,6 +63,7 @@
         android:text="@string/text_username"
         android:textSize="15sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/labelName"
         app:layout_constraintTop_toBottomOf="@+id/labelName" />
 
@@ -50,6 +75,7 @@
         android:text="@string/text_email"
         android:textSize="15sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/labelUserName"
         app:layout_constraintTop_toBottomOf="@+id/labelUserName" />
 
@@ -61,6 +87,7 @@
         android:text="@string/text_address"
         android:textSize="15sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/labelUserName"
         app:layout_constraintTop_toBottomOf="@+id/labelEmail" />
 
@@ -72,6 +99,7 @@
         android:text="@string/text_zip_code"
         android:textSize="15sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/labelAddress"
         app:layout_constraintTop_toBottomOf="@+id/labelAddress" />
 
@@ -83,6 +111,7 @@
         android:text="@string/text_phone"
         android:textSize="15sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/labelUserName"
         app:layout_constraintTop_toBottomOf="@+id/labelZipCode" />
 
@@ -94,6 +123,7 @@
         android:text="@string/text_website"
         android:textSize="15sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/labelUserName"
         app:layout_constraintTop_toBottomOf="@+id/labelPhone" />
 
@@ -105,6 +135,7 @@
         android:text="@string/text_company"
         android:textSize="15sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/labelUserName"
         app:layout_constraintTop_toBottomOf="@+id/labelWebsite" />
 
@@ -115,6 +146,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/labelName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/labelUserName"
@@ -125,6 +157,7 @@
         android:id="@+id/username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/labelUserName"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="@+id/name"
@@ -135,6 +168,7 @@
         android:id="@+id/email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/labelEmail"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="@+id/name"
@@ -145,6 +179,7 @@
         android:id="@+id/address"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/labelAddress"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="@+id/name"
@@ -155,6 +190,7 @@
         android:id="@+id/zipCode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/labelZipCode"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="@+id/name"
@@ -165,6 +201,7 @@
         android:id="@+id/phone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/labelPhone"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="@+id/name"
@@ -175,6 +212,7 @@
         android:id="@+id/website"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/labelWebsite"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="@+id/name"
@@ -185,6 +223,7 @@
         android:id="@+id/company"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/labelCompany"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="@+id/name"

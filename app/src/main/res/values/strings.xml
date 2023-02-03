@@ -13,4 +13,5 @@
     <string name="text_phone">Phone:</string>
     <string name="text_website">Website:</string>
     <string name="text_company">Company:</string>
+    <string name="text_post_information">Post Information</string>
 </resources>

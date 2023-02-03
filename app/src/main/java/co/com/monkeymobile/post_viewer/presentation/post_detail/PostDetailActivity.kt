@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import co.com.monkeymobile.post_viewer.databinding.ActivityPostDetailBinding
 import co.com.monkeymobile.post_viewer.presentation.post_detail.post.PostDetailFragment
+import co.com.monkeymobile.post_viewer.presentation.post_detail.user.UserDetailsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,13 +35,15 @@ class PostDetailActivity : AppCompatActivity() {
 
         val postId = intent.getIntExtra(EXTRA_POST_ID, 0)
         val userId = intent.getIntExtra(EXTRA_USER_ID, 0)
-        addFragment(PostDetailFragment.newInstance(postId))
+
+        addFragment(binding.postDetailFragmentContainer.id, PostDetailFragment.newInstance(postId))
+        addFragment(binding.userDetailFragmentContainer.id, UserDetailsFragment.newInstance(userId))
     }
 
-    private fun addFragment(fragment: Fragment) {
+    private fun addFragment(containerId: Int, fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
-            .add(binding.fragmentContainer.id, fragment)
+            .add(containerId, fragment)
             .commit()
     }
 }

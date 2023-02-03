@@ -11,7 +11,10 @@
         android:id="@+id/labelTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/text_author_information"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,7 +23,11 @@
         android:id="@+id/labelName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:text="@string/text_name"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/labelTitle" />
 
@@ -28,7 +35,10 @@
         android:id="@+id/labelUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/text_username"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/labelName"
         app:layout_constraintTop_toBottomOf="@+id/labelName" />
 
@@ -36,7 +46,10 @@
         android:id="@+id/labelEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/text_email"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/labelUserName"
         app:layout_constraintTop_toBottomOf="@+id/labelUserName" />
 
@@ -44,7 +57,10 @@
         android:id="@+id/labelAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/text_address"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/labelUserName"
         app:layout_constraintTop_toBottomOf="@+id/labelEmail" />
 
@@ -52,15 +68,21 @@
         android:id="@+id/labelZipCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/text_zip_code"
-        app:layout_constraintStart_toStartOf="@+id/labelUserName"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/labelAddress"
         app:layout_constraintTop_toBottomOf="@+id/labelAddress" />
 
     <TextView
         android:id="@+id/labelPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/text_phone"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/labelUserName"
         app:layout_constraintTop_toBottomOf="@+id/labelZipCode" />
 
@@ -68,16 +90,21 @@
         android:id="@+id/labelWebsite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/text_website"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/labelUserName"
-        app:layout_constraintTop_toBottomOf="@+id/labelZipCode" />
+        app:layout_constraintTop_toBottomOf="@+id/labelPhone" />
 
     <TextView
         android:id="@+id/labelCompany"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/text_company"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/labelUserName"
         app:layout_constraintTop_toBottomOf="@+id/labelWebsite" />
 
@@ -86,72 +113,82 @@
         android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/labelName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/labelUserName"
-        app:layout_constraintTop_toBottomOf="@+id/labelTitle"
+        app:layout_constraintTop_toTopOf="@+id/labelName"
         tools:text="Leanne Graham" />
 
     <TextView
         android:id="@+id/username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/labelUserName"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintTop_toTopOf="@+id/labelUserName"
         tools:text="Bret" />
 
     <TextView
         android:id="@+id/email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/labelEmail"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@+id/username"
+        app:layout_constraintTop_toTopOf="@+id/labelEmail"
         tools:text="Sincere@april.biz" />
 
     <TextView
         android:id="@+id/address"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/labelAddress"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintTop_toTopOf="@+id/labelAddress"
         tools:text="Gwenborough, Kulas Light, Apt. 556" />
 
     <TextView
         android:id="@+id/zipCode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/labelZipCode"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@+id/address"
+        app:layout_constraintTop_toTopOf="@+id/labelZipCode"
         tools:text="92998-3874" />
 
     <TextView
         android:id="@+id/phone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/labelPhone"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@+id/zipCode"
+        app:layout_constraintTop_toTopOf="@+id/labelPhone"
         tools:text="1-770-736-8031 x56442" />
 
     <TextView
         android:id="@+id/website"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/labelWebsite"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@+id/phone"
+        app:layout_constraintTop_toTopOf="@+id/labelWebsite"
         tools:text="hildegard.org" />
 
     <TextView
         android:id="@+id/company"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/labelCompany"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@+id/website"
+        app:layout_constraintTop_toTopOf="@+id/labelCompany"
         tools:text="Romaguera-Crona" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

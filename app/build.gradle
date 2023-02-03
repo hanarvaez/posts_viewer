@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -41,16 +44,25 @@ dependencies {
     implementation(Dependencies.coreKtx)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.material)
-    implementation 'androidx.appcompat:appcompat:1.6.0'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation(Dependencies.constraintLayout)
     testImplementation(Dependencies.jUnit)
     androidTestImplementation(Dependencies.jUnitExt)
     androidTestImplementation(Dependencies.espressoCore)
+
     implementation(Dependencies.coroutines)
     implementation(Dependencies.lifecycleViewModel)
     implementation(Dependencies.lifecycleRuntime)
     implementation(Dependencies.lifecycleData)
+    implementation(Dependencies.activityKtx)
     implementation(Dependencies.splash)
+    implementation(Dependencies.hilt)
+    kapt(Dependencies.hiltAndroidCompiler)
+    kapt(Dependencies.hiltCompiler)
+    implementation(Dependencies.retrofit)
+    implementation(Dependencies.retrofitConverterGson)
+    implementation(Dependencies.httpLoggingInterceptor)
+}
 
+kapt {
+    correctErrorTypes = true
 }

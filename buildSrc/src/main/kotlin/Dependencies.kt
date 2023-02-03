@@ -11,12 +11,18 @@ object Versions {
     const val coreKtxVersion = "1.9.0"
     const val appCompatVersion = "1.6.0"
     const val materialVersion = "1.8.0"
+    const val constraintLayoutVersion = "2.1.3"
     const val jUnitVersion = "4.13.2"
     const val jUnitExtVersion = "1.1.5"
     const val espressoCoreVersion = "3.5.1"
     const val coroutinesVersion = "1.6.1"
     const val lifecycleVersion = "2.5.1"
+    const val activityKtxVersion = "1.6.1"
     const val splashVersion = "1.0.0"
+    const val hiltVersion = "2.44"
+    const val hiltCompilerVersion = "1.0.0"
+    const val retrofitVersion = "2.9.0"
+    const val loggingInterceptorVersion = "4.10.0"
 }
 
 object Dependencies {
@@ -28,6 +34,9 @@ object Dependencies {
 
     // Material
     const val material = "com.google.android.material:material:${Versions.materialVersion}"
+
+    // Constraint Layout
+    const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayoutVersion}"
 
     // Tests
     const val jUnit = "junit:junit:${Versions.jUnitVersion}"
@@ -41,8 +50,20 @@ object Dependencies {
     const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}"
     const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleVersion}"
     const val lifecycleData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycleVersion}"
+    const val activityKtx = "androidx.activity:activity-ktx:${Versions.activityKtxVersion}"
 
     // Splash
     const val splash = "androidx.core:core-splashscreen:${Versions.splashVersion}"
 
+    // Hilt
+    const val hilt = "com.google.dagger:hilt-android:${Versions.hiltVersion}"
+    const val hiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hiltVersion}"
+    const val hiltCompiler = "androidx.hilt:hilt-compiler:${Versions.hiltCompilerVersion}"
+
+    // Retrofit
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
+    const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofitVersion}"
+
+    // Http Logging Interceptor
+    const val httpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptorVersion}"
 }

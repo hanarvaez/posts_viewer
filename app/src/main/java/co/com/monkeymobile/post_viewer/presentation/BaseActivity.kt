@@ -1,7 +1,6 @@
 package co.com.monkeymobile.post_viewer.presentation
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,10 +9,10 @@ import co.com.monkeymobile.post_viewer.util.TAG_VIEW_UPDATE
 
 abstract class BaseActivity<ViewModel: BaseViewModel<State, Event>, State: ViewState, Event: ViewEvent> : AppCompatActivity() {
 
-    lateinit var viewModel: ViewModel
+    abstract val viewModel: ViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         viewModel.state.observe(this) { state ->
             try {

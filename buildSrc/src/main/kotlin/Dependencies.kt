@@ -18,6 +18,7 @@ object Versions {
     const val coroutinesVersion = "1.6.1"
     const val lifecycleVersion = "2.5.1"
     const val activityKtxVersion = "1.6.1"
+    const val fragmentKtxVersion = "1.5.5"
     const val splashVersion = "1.0.0"
     const val hiltVersion = "2.44"
     const val hiltCompilerVersion = "1.0.0"
@@ -51,6 +52,7 @@ object Dependencies {
     const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleVersion}"
     const val lifecycleData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycleVersion}"
     const val activityKtx = "androidx.activity:activity-ktx:${Versions.activityKtxVersion}"
+    const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtxVersion}"
 
     // Splash
     const val splash = "androidx.core:core-splashscreen:${Versions.splashVersion}"

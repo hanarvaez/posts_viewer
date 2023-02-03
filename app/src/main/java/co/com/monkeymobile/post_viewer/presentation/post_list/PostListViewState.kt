@@ -16,8 +16,4 @@ sealed class PostListViewState : ViewState {
     class Content(val posts: List<Post>) : PostListViewState() {
         override fun getName(): String = "PostDetail.Content"
     }
-
-    object Final : PostListViewState() {
-        override fun getName(): String = "PostDetail.Final"
-    }
 }

@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import co.com.monkeymobile.post_viewer.databinding.ActivityPostListBinding
 import co.com.monkeymobile.post_viewer.domain.model.Post
 import co.com.monkeymobile.post_viewer.presentation.BaseActivity
+import co.com.monkeymobile.post_viewer.presentation.post_detail.PostDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,7 +35,6 @@ class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, Post
             PostListViewState.Initial -> buildInitialState()
             PostListViewState.Loading -> buildLoadingState()
             is PostListViewState.Content -> buildContentState(state)
-            PostListViewState.Final -> buildFinalState()
         }
     }
 
@@ -72,9 +72,7 @@ class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, Post
         adapter.submitList(state.posts)
     }
 
-    private fun buildFinalState() {}
-
     override fun onPostClicked(post: Post) {
-        println(post)
+        startActivity(PostDetailActivity.getIntent(this, post.id))
     }
 }

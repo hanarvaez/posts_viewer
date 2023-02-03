@@ -24,7 +24,6 @@ class PostListViewModel @Inject constructor(
             is PostListViewEvent.Refresh -> refreshEvent()
             is PostListViewEvent.MarkPostAsFavorite -> markPostAsFavoriteEvent(event.postId)
             is PostListViewEvent.UnmarkPostAsFavorite -> unmarkPostAsFavoriteEvent(event.postId)
-            is PostListViewEvent.SeePostDetail -> seePostDetailEvent(event.postId)
         }
     }
 
@@ -39,8 +38,6 @@ class PostListViewModel @Inject constructor(
     private suspend fun markPostAsFavoriteEvent(postId: Int) {}
 
     private suspend fun unmarkPostAsFavoriteEvent(postId: Int) {}
-
-    private suspend fun seePostDetailEvent(postId: Int) {}
 
     private suspend fun fetchPostsList() {
         setState(PostListViewState.Loading)

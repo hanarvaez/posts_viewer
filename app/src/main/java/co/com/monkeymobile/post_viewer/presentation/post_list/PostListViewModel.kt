@@ -47,11 +47,14 @@ class PostListViewModel @Inject constructor(
 
         when (val result = getPostListUseCase(NoParams)) {
             is Result.Success -> {
+                setState(PostListViewState.Content(result.data.posts))
             }
 
-            else -> toastMessage.postValue(result.toString())
+            is Result.Error -> {
+                toastMessage.postValue(result.toString())
+                setState(PostListViewState.Content(emptyList()))
+            }
         }
 
-        setState(PostListViewState.Content)
     }
 }

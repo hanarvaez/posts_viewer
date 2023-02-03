@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">posts_viewer</string>
     <string name="text_refresh">Refresh</string>
+    <string name="text_no_data_found">No data found</string>
 </resources>

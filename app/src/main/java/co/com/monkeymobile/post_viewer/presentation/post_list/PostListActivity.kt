@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import co.com.monkeymobile.post_viewer.databinding.ActivityPostListBinding
+import co.com.monkeymobile.post_viewer.domain.model.Post
 import co.com.monkeymobile.post_viewer.presentation.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,7 +31,7 @@ class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, Post
         when (state) {
             PostListViewState.Initial -> buildInitialState()
             PostListViewState.Loading -> buildLoadingState()
-            PostListViewState.Content -> buildContentState()
+            is PostListViewState.Content -> buildContentState(state)
             PostListViewState.Final -> buildFinalState()
         }
     }
@@ -44,14 +45,22 @@ class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, Post
     private fun buildLoadingState() {
         with(binding) {
             postsRecyclerView.visibility = View.GONE
+            errorMessage.visibility = View.GONE
             progress.visibility = View.VISIBLE
             refreshButton.isEnabled = false
         }
     }
 
-    private fun buildContentState() {
+    private fun buildContentState(state: PostListViewState.Content) {
+        val errorMessageVisibility = if (state.posts.isEmpty()) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+
         with(binding) {
             postsRecyclerView.visibility = View.VISIBLE
+            errorMessage.visibility = errorMessageVisibility
             progress.visibility = View.GONE
             refreshButton.isEnabled = true
         }

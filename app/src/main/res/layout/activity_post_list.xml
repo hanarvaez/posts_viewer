@@ -12,7 +12,19 @@
         android:layout_height="200dp"
         android:indeterminate="true"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/refreshButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/errorMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_no_data_found"
+        android:textSize="30sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/refreshButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

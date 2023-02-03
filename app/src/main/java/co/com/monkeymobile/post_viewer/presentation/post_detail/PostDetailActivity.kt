@@ -14,7 +14,7 @@ class PostDetailActivity : AppCompatActivity() {
 
     companion object {
 
-        const val EXTRA_POST_ID = "postId"
+        private const val EXTRA_POST_ID = "postId"
 
         fun getIntent(context: Context, postId: Int) =
             Intent(context, PostDetailActivity::class.java).apply {

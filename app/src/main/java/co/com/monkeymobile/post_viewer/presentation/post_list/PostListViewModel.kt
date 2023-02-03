@@ -43,9 +43,7 @@ class PostListViewModel @Inject constructor(
         setState(PostListViewState.Loading)
 
         when (val result = getPostListUseCase(NoParams)) {
-            is Result.Success -> {
-                setState(PostListViewState.Content(result.data.posts))
-            }
+            is Result.Success -> setState(PostListViewState.Content(result.data.posts))
 
             is Result.Error -> {
                 toastMessage.postValue(result.toString())

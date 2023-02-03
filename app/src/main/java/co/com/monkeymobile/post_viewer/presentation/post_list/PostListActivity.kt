@@ -11,7 +11,8 @@ import co.com.monkeymobile.post_viewer.presentation.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, PostListViewEvent>() {
+class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, PostListViewEvent>(),
+    PostAdapter.PostItemListener {
 
     companion object {
         fun getIntent(context: Context) = Intent(context, PostListActivity::class.java)
@@ -19,6 +20,7 @@ class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, Post
 
     override val viewModel: PostListViewModel by viewModels()
     private lateinit var binding: ActivityPostListBinding
+    private lateinit var adapter: PostAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +39,9 @@ class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, Post
     }
 
     private fun buildInitialState() {
+        adapter = PostAdapter(this)
+        adapter.submitList(emptyList())
+        binding.postsRecyclerView.adapter = adapter
         binding.refreshButton.setOnClickListener { dispatchEvent(PostListViewEvent.Refresh) }
 
         dispatchEvent(PostListViewEvent.Initialize)
@@ -64,7 +69,13 @@ class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, Post
             progress.visibility = View.GONE
             refreshButton.isEnabled = true
         }
+
+        adapter.submitList(state.posts)
     }
 
     private fun buildFinalState() {}
+
+    override fun onPostClicked(post: Post) {
+        println(post)
+    }
 }

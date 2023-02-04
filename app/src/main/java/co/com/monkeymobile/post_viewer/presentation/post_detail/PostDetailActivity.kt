@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import co.com.monkeymobile.post_viewer.databinding.ActivityPostDetailBinding
+import co.com.monkeymobile.post_viewer.presentation.post_detail.comments.CommentsListFragment
 import co.com.monkeymobile.post_viewer.presentation.post_detail.post.PostDetailFragment
 import co.com.monkeymobile.post_viewer.presentation.post_detail.user.UserDetailsFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,6 +39,7 @@ class PostDetailActivity : AppCompatActivity() {
 
         addFragment(binding.postDetailFragmentContainer.id, PostDetailFragment.newInstance(postId))
         addFragment(binding.userDetailFragmentContainer.id, UserDetailsFragment.newInstance(userId))
+        addFragment(binding.commentsListFragmentContainer.id, CommentsListFragment.newInstance(userId))
     }
 
     private fun addFragment(containerId: Int, fragment: Fragment) {

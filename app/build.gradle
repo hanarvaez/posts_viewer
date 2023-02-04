@@ -54,6 +54,7 @@ dependencies {
     implementation(Dependencies.lifecycleRuntime)
     implementation(Dependencies.lifecycleData)
     implementation(Dependencies.activityKtx)
+    implementation(Dependencies.fragmentKtx)
     implementation(Dependencies.splash)
     implementation(Dependencies.hilt)
     kapt(Dependencies.hiltAndroidCompiler)

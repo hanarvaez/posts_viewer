@@ -19,8 +19,4 @@ sealed class PostListViewEvent : ViewEvent {
     class UnmarkPostAsFavorite(val postId: Int) : PostListViewEvent() {
         override fun getName() = "PostList.UnmarkPostAsFavorite"
     }
-
-    class SeePostDetail(val postId: Int) : PostListViewEvent() {
-        override fun getName() = "PostList.SeePostDetail"
-    }
 }

@@ -2,4 +2,18 @@
     <string name="app_name">posts_viewer</string>
     <string name="text_refresh">Refresh</string>
     <string name="text_no_data_found">No data found</string>
+    <string name="text_post_title">Title:</string>
+    <string name="text_post_description">Description:</string>
+    <string name="text_author_information">Author information</string>
+    <string name="text_name">Name:</string>
+    <string name="text_username">Username:</string>
+    <string name="text_email">email:</string>
+    <string name="text_address">Address:</string>
+    <string name="text_zip_code">Zip Code:</string>
+    <string name="text_phone">Phone:</string>
+    <string name="text_website">Website:</string>
+    <string name="text_company">Company:</string>
+    <string name="text_post_information">Post Information</string>
+    <string name="text_body">Body:</string>
+    <string name="text_comments">Comments</string>
 </resources>

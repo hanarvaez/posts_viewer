@@ -22,9 +22,8 @@ class PostListViewModel @Inject constructor(
         when (event) {
             is PostListViewEvent.Initialize -> initializeEvent()
             is PostListViewEvent.Refresh -> refreshEvent()
-            is PostListViewEvent.MarkPostAsFavorite -> markPostAsFavoriteEvent(event.postId)
-            is PostListViewEvent.UnmarkPostAsFavorite -> unmarkPostAsFavoriteEvent(event.postId)
-            is PostListViewEvent.SeePostDetail -> seePostDetailEvent(event.postId)
+            is PostListViewEvent.MarkPostAsFavorite -> markPostAsFavoriteEvent(event)
+            is PostListViewEvent.UnmarkPostAsFavorite -> unmarkPostAsFavoriteEvent(event)
         }
     }
 
@@ -36,19 +35,15 @@ class PostListViewModel @Inject constructor(
         fetchPostsList()
     }
 
-    private suspend fun markPostAsFavoriteEvent(postId: Int) {}
+    private suspend fun markPostAsFavoriteEvent(event: PostListViewEvent.MarkPostAsFavorite) {}
 
-    private suspend fun unmarkPostAsFavoriteEvent(postId: Int) {}
-
-    private suspend fun seePostDetailEvent(postId: Int) {}
+    private suspend fun unmarkPostAsFavoriteEvent(event: PostListViewEvent.UnmarkPostAsFavorite) {}
 
     private suspend fun fetchPostsList() {
         setState(PostListViewState.Loading)
 
         when (val result = getPostListUseCase(NoParams)) {
-            is Result.Success -> {
-                setState(PostListViewState.Content(result.data.posts))
-            }
+            is Result.Success -> setState(PostListViewState.Content(result.data.posts))
 
             is Result.Error -> {
                 toastMessage.postValue(result.toString())

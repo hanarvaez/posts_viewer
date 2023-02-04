@@ -14,11 +14,10 @@ class PostAdapter(private val listener: PostItemListener) :
     ) {
 
     private class DiffCallback : ItemCallback<Post>() {
+
         override fun areItemsTheSame(oldItem: Post, newItem: Post) = oldItem.id == newItem.id
 
-        override fun areContentsTheSame(oldItem: Post, newItem: Post) =
-            oldItem.title == newItem.title
-
+        override fun areContentsTheSame(oldItem: Post, newItem: Post) = oldItem == newItem
     }
 
     interface PostItemListener {
@@ -29,6 +28,7 @@ class PostAdapter(private val listener: PostItemListener) :
 
         fun bind(post: Post, listener: PostItemListener) {
             binding.postTitle.text = post.title
+
             binding.root.setOnClickListener { listener.onPostClicked(post) }
         }
     }

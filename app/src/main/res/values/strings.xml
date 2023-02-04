@@ -14,4 +14,5 @@
     <string name="text_website">Website:</string>
     <string name="text_company">Company:</string>
     <string name="text_post_information">Post Information</string>
+    <string name="text_body">Body:</string>
 </resources>

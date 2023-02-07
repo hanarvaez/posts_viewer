@@ -12,6 +12,8 @@ interface LocalDataSource {
 
     suspend fun fetchPost(postId: Int): PostEntity
 
+    suspend fun savePost(vararg post: PostEntity)
+
     suspend fun markPostAsFavorite(postId: Int)
 
     suspend fun unmarkPostAsFavorite(postId: Int)

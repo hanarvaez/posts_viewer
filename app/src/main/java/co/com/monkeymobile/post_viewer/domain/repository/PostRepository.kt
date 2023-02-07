@@ -8,7 +8,5 @@ interface PostRepository {
 
     suspend fun fetchPost(postId: Int): Post
 
-    suspend fun markPostAsFavorite(postId: Int)
-
-    suspend fun unmarkPostAsFavorite(postId: Int)
+    suspend fun swapPostfavoriteState(postId: Int)
 }

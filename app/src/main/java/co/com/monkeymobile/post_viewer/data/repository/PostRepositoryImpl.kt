@@ -33,7 +33,5 @@ class PostRepositoryImpl @Inject constructor(
 
     override suspend fun fetchPost(postId: Int) = localDataSource.fetchPost(postId).toPost()
 
-    override suspend fun markPostAsFavorite(postId: Int) {}
-
-    override suspend fun unmarkPostAsFavorite(postId: Int) {}
+    override suspend fun swapPostfavoriteState(postId: Int) = localDataSource.swapPostFavoriteState(postId)
 }

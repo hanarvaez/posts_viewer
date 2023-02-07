@@ -75,4 +75,8 @@ class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, Post
     override fun onPostClicked(post: Post) {
         startActivity(PostDetailActivity.getIntent(this, post.id, post.userId))
     }
+
+    override fun swapFavoriteState(post: Post) {
+        dispatchEvent(PostListViewEvent.SwapPostFavoriteState(post.id))
+    }
 }

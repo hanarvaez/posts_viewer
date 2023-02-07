@@ -12,11 +12,7 @@ sealed class PostListViewEvent : ViewEvent {
         override fun getName(): String = "PostList.Refresh"
     }
 
-    class MarkPostAsFavorite(val postId: Int) : PostListViewEvent() {
-        override fun getName() = "PostList.MarkPostAsFavorite"
-    }
-
-    class UnmarkPostAsFavorite(val postId: Int) : PostListViewEvent() {
-        override fun getName() = "PostList.UnmarkPostAsFavorite"
+    class SwapPostFavoriteState(val postId: Int) : PostListViewEvent() {
+        override fun getName() = "PostList.SwapPostFavoriteState"
     }
 }

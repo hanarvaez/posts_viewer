@@ -25,6 +25,7 @@ object Versions {
     const val retrofitVersion = "2.9.0"
     const val loggingInterceptorVersion = "4.10.0"
     const val roomVersion = "2.5.0"
+    const val glideVersion = "4.14.2"
 }
 
 object Dependencies {
@@ -74,4 +75,8 @@ object Dependencies {
     const val roomRuntime = "androidx.room:room-runtime:${Versions.roomVersion}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.roomVersion}"
+
+    // Glide
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glideVersion}"
+    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glideVersion}"
 }

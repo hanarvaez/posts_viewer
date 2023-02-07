@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import co.com.monkeymobile.post_viewer.data.source.local.entities.ADDRESS_LAT_COLUMN_NAME
 import co.com.monkeymobile.post_viewer.data.source.local.entities.ADDRESS_LNG_COLUMN_NAME
 import co.com.monkeymobile.post_viewer.data.source.local.entities.ADDRESS_TABLE_NAME
 import co.com.monkeymobile.post_viewer.data.source.local.entities.AddressEntity
@@ -21,7 +22,7 @@ interface UserDao {
     fun insertUser(vararg userEntity: UserEntity)
 
     @Query("SELECT * FROM $USER_TABLE_NAME WHERE $USER_ID_COLUMN_NAME = :userId")
-    fun getUser(userId: Int): UserEntity
+    fun getUser(userId: Int): List<UserEntity>
 }
 
 @Dao
@@ -30,7 +31,7 @@ interface AddressDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAddress(vararg addressEntity: AddressEntity)
 
-    @Query("SELECT * FROM $ADDRESS_TABLE_NAME WHERE $ADDRESS_LNG_COLUMN_NAME = :latitude AND $ADDRESS_LNG_COLUMN_NAME = :longitude")
+    @Query("SELECT * FROM $ADDRESS_TABLE_NAME WHERE $ADDRESS_LAT_COLUMN_NAME = :latitude AND $ADDRESS_LNG_COLUMN_NAME = :longitude")
     fun getAddress(latitude: String, longitude: String): AddressEntity
 }
 

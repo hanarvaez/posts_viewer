@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/postTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="5dp"
         android:textAlignment="center"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/isFavorite"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="sunt aut facere repellat provident occaecati excepturi optio reprehenderit" />
+
+    <ImageView
+        android:id="@+id/isFavorite"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="5dp"
+        android:src="@drawable/unfilled_star"
+        app:layout_constraintBottom_toBottomOf="@+id/postTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/postTitle" />
 
     <View
         android:id="@+id/line"
@@ -23,9 +35,8 @@
         android:layout_height="1dp"
         android:layout_marginTop="20dp"
         android:background="@color/colorLine"
-        app:layout_constraintEnd_toEndOf="@+id/postTitle"
+        app:layout_constraintEnd_toEndOf="@+id/isFavorite"
         app:layout_constraintStart_toStartOf="@+id/postTitle"
         app:layout_constraintTop_toBottomOf="@+id/postTitle" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

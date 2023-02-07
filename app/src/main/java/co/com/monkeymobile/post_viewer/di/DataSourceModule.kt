@@ -1,7 +1,7 @@
 package co.com.monkeymobile.post_viewer.di
 
-import co.com.monkeymobile.post_viewer.data.source.local.PostLocalDataSource
-import co.com.monkeymobile.post_viewer.data.source.local.impl.PostLocalDataSourceImpl
+import co.com.monkeymobile.post_viewer.data.source.local.LocalDataSource
+import co.com.monkeymobile.post_viewer.data.source.local.impl.LocalDataSourceImpl
 import co.com.monkeymobile.post_viewer.data.source.remote.CommentRemoteDataSource
 import co.com.monkeymobile.post_viewer.data.source.remote.PostRemoteDataSource
 import co.com.monkeymobile.post_viewer.data.source.remote.UserRemoteDataSource
@@ -21,7 +21,7 @@ abstract class DataSourceModule {
     abstract fun providePostRemoteDataSource(source: PostRemoteDataSourceImpl): PostRemoteDataSource
 
     @Binds
-    abstract fun providePostLocalDataSource(source: PostLocalDataSourceImpl): PostLocalDataSource
+    abstract fun providePostLocalDataSource(source: LocalDataSourceImpl): LocalDataSource
 
     @Binds
     abstract fun providesUserRemoteDataSource(source: UserRemoteDataSourceImpl): UserRemoteDataSource

@@ -21,7 +21,7 @@ abstract class DataSourceModule {
     abstract fun providePostRemoteDataSource(source: PostRemoteDataSourceImpl): PostRemoteDataSource
 
     @Binds
-    abstract fun providePostLocalDataSource(source: LocalDataSourceImpl): LocalDataSource
+    abstract fun provideLocalDataSource(source: LocalDataSourceImpl): LocalDataSource
 
     @Binds
     abstract fun providesUserRemoteDataSource(source: UserRemoteDataSourceImpl): UserRemoteDataSource

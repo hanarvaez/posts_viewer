@@ -1,6 +1,6 @@
 package co.com.monkeymobile.post_viewer.data.repository
 
-import co.com.monkeymobile.post_viewer.data.source.local.LocalDataSource
+import co.com.monkeymobile.post_viewer.data.source.local.PostLocalDataSource
 import co.com.monkeymobile.post_viewer.data.source.local.entities.PostEntity
 import co.com.monkeymobile.post_viewer.data.source.local.entities.toPost
 import co.com.monkeymobile.post_viewer.data.source.remote.PostRemoteDataSource
@@ -11,7 +11,7 @@ import javax.inject.Singleton
 
 @Singleton
 class PostRepositoryImpl @Inject constructor(
-    private val localDataSource: LocalDataSource,
+    private val localDataSource: PostLocalDataSource,
     private val remotePostDataSource: PostRemoteDataSource,
 ) : PostRepository {
 

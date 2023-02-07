@@ -1,6 +1,7 @@
 package co.com.monkeymobile.post_viewer.data.repository
 
-import co.com.monkeymobile.post_viewer.data.source.local.LocalDataSource
+import co.com.monkeymobile.post_viewer.data.source.local.CommentLocalDataSource
+import co.com.monkeymobile.post_viewer.data.source.local.PostLocalDataSource
 import co.com.monkeymobile.post_viewer.data.source.local.entities.CommentEntity
 import co.com.monkeymobile.post_viewer.data.source.local.entities.toComment
 import co.com.monkeymobile.post_viewer.data.source.remote.CommentRemoteDataSource
@@ -11,15 +12,17 @@ import javax.inject.Singleton
 
 @Singleton
 class CommentRepositoryImpl @Inject constructor(
-    private val localDataSource: LocalDataSource,
+    private val localDataSource: CommentLocalDataSource,
     private val remoteDataSource: CommentRemoteDataSource,
 ) : CommentRepository {
 
     override suspend fun fetchCommentsList(postId: Int): List<Comment> {
-        val localComments = localDataSource.fetchPostComments(postId).map { it.toComment() }.toMutableList()
+        val localComments =
+            localDataSource.fetchPostComments(postId).map { it.toComment() }.toMutableList()
 
         if (localComments.isEmpty()) {
-            val remoteComments = remoteDataSource.fetchComments(postId).map { CommentEntity(it.postId, it.id, it.name, it.email, it.body) }
+            val remoteComments = remoteDataSource.fetchComments(postId)
+                .map { CommentEntity(it.postId, it.id, it.name, it.email, it.body) }
             localDataSource.saveComment(*remoteComments.toTypedArray())
             localComments.addAll(localDataSource.fetchPostComments(postId).map { it.toComment() })
         }

@@ -4,6 +4,8 @@ import co.com.monkeymobile.post_viewer.di.DefaultDispatcher
 import co.com.monkeymobile.post_viewer.domain.use_case.GetPostListUseCase
 import co.com.monkeymobile.post_viewer.domain.use_case.NoParams
 import co.com.monkeymobile.post_viewer.domain.use_case.Result
+import co.com.monkeymobile.post_viewer.domain.use_case.SwapPostFavoriteStateUseCase
+import co.com.monkeymobile.post_viewer.domain.use_case.SwapPostFavoriteStateUseCaseParams
 import co.com.monkeymobile.post_viewer.presentation.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -12,6 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PostListViewModel @Inject constructor(
     private val getPostListUseCase: GetPostListUseCase,
+    private val swapPostFavoriteStateUseCase: SwapPostFavoriteStateUseCase,
     @DefaultDispatcher coroutineDispatcher: CoroutineDispatcher
 ) :
     BaseViewModel<PostListViewState, PostListViewEvent>(coroutineDispatcher) {
@@ -22,8 +25,7 @@ class PostListViewModel @Inject constructor(
         when (event) {
             is PostListViewEvent.Initialize -> initializeEvent()
             is PostListViewEvent.Refresh -> refreshEvent()
-            is PostListViewEvent.MarkPostAsFavorite -> markPostAsFavoriteEvent(event)
-            is PostListViewEvent.UnmarkPostAsFavorite -> unmarkPostAsFavoriteEvent(event)
+            is PostListViewEvent.SwapPostFavoriteState -> swapPostFavoriteStatusEvent(event)
         }
     }
 
@@ -34,10 +36,6 @@ class PostListViewModel @Inject constructor(
     private suspend fun refreshEvent() {
         fetchPostsList()
     }
-
-    private suspend fun markPostAsFavoriteEvent(event: PostListViewEvent.MarkPostAsFavorite) {}
-
-    private suspend fun unmarkPostAsFavoriteEvent(event: PostListViewEvent.UnmarkPostAsFavorite) {}
 
     private suspend fun fetchPostsList() {
         setState(PostListViewState.Loading)
@@ -51,5 +49,17 @@ class PostListViewModel @Inject constructor(
             }
         }
 
+    }
+
+    private suspend fun swapPostFavoriteStatusEvent(event: PostListViewEvent.SwapPostFavoriteState) {
+        setState(PostListViewState.Loading)
+
+        when(val result = swapPostFavoriteStateUseCase(SwapPostFavoriteStateUseCaseParams(event.postId))){
+            is Result.Success -> fetchPostsList()
+            is Result.Error -> {
+                toastMessage.postValue(result.toString())
+                setState(PostListViewState.Content(emptyList()))
+            }
+        }
     }
 }

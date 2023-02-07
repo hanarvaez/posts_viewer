@@ -3,6 +3,7 @@ package co.com.monkeymobile.post_viewer.data.source.local.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import co.com.monkeymobile.post_viewer.domain.model.Post
 
 const val POST_TABLE_NAME = "post"
 const val POST_ID_COLUMN_NAME = "id"
@@ -14,3 +15,5 @@ data class PostEntity(
     val title: String,
     val body: String
 )
+
+fun PostEntity.toPost() = Post(userId, id, title, body)

@@ -3,6 +3,10 @@ package co.com.monkeymobile.post_viewer.data.source.local.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import co.com.monkeymobile.post_viewer.domain.model.Address
+import co.com.monkeymobile.post_viewer.domain.model.Company
+import co.com.monkeymobile.post_viewer.domain.model.Geolocalization
+import co.com.monkeymobile.post_viewer.domain.model.User
 
 const val USER_TABLE_NAME = "user"
 const val ADDRESS_TABLE_NAME = "address"
@@ -43,4 +47,29 @@ data class CompanyEntity(
     @PrimaryKey @ColumnInfo(name = COMPANY_NAME_COLUMN_NAME) val name: String,
     val catchPhrase: String,
     val bs: String
+)
+
+fun UserEntity.toUser(address: Address, company: Company) = User(
+    id = id,
+    name = name,
+    username = username,
+    email = email,
+    address = address,
+    phone = phone,
+    website = website,
+    company = company
+)
+
+fun AddressEntity.toAddress() = Address(
+    street = street,
+    suite = suite,
+    city = city,
+    zipcode = zipcode,
+    geo = Geolocalization(lat, lng)
+)
+
+fun CompanyEntity.toCompany() = Company(
+    name,
+    catchPhrase,
+    bs
 )

@@ -1,7 +1,9 @@
 package co.com.monkeymobile.post_viewer.presentation.post_detail.post
 
 import co.com.monkeymobile.post_viewer.di.DefaultDispatcher
-import co.com.monkeymobile.post_viewer.domain.use_case.*
+import co.com.monkeymobile.post_viewer.domain.use_case.GetPostUseCase
+import co.com.monkeymobile.post_viewer.domain.use_case.GetPostUseCaseParams
+import co.com.monkeymobile.post_viewer.domain.use_case.Result
 import co.com.monkeymobile.post_viewer.presentation.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher

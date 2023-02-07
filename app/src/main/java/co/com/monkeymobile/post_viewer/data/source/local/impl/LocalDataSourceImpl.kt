@@ -18,4 +18,14 @@ class LocalDataSourceImpl @Inject constructor(private val appDatabase: AppDataba
 
     override suspend fun unmarkPostAsFavorite(postId: Int) {
     }
+
+    override suspend fun fetchUser(userId: Int) = appDatabase.userDao().getUser(userId)
+
+    override suspend fun fetchAddress(latitude: String, longitude: String) =
+        appDatabase.addressDao().getAddress(latitude, longitude)
+
+    override suspend fun fetchCompany(companyName: String) =
+        appDatabase.companyDao().getCompany(companyName)
+
+    override suspend fun fetchPostComments(postId: Int) = appDatabase.commentDao().getCommentsWithPostId(postId)
 }

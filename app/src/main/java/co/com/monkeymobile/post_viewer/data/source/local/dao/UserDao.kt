@@ -21,7 +21,7 @@ interface UserDao {
     fun insertUser(vararg userEntity: UserEntity)
 
     @Query("SELECT * FROM $USER_TABLE_NAME WHERE $USER_ID_COLUMN_NAME = :userId")
-    fun getPost(userId: Int): UserEntity
+    fun getUser(userId: Int): UserEntity
 }
 
 @Dao

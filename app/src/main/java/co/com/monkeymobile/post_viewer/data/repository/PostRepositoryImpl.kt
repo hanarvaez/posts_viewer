@@ -4,6 +4,7 @@ import co.com.monkeymobile.post_viewer.data.source.local.PostLocalDataSource
 import co.com.monkeymobile.post_viewer.data.source.local.entities.PostEntity
 import co.com.monkeymobile.post_viewer.data.source.local.entities.toPost
 import co.com.monkeymobile.post_viewer.data.source.remote.PostRemoteDataSource
+import co.com.monkeymobile.post_viewer.data.source.remote.response.toPost
 import co.com.monkeymobile.post_viewer.domain.model.Post
 import co.com.monkeymobile.post_viewer.domain.repository.PostRepository
 import javax.inject.Inject
@@ -19,10 +20,12 @@ class PostRepositoryImpl @Inject constructor(
         val savedPosts = localDataSource.fetchPostsList().map { it.toPost() }.toMutableList()
 
         if (savedPosts.isEmpty()) {
-            val newPosts = remotePostDataSource.fetchPostsList()
-                .map { PostEntity(it.userId, it.id, it.title, it.body) }
-            localDataSource.savePost(*newPosts.toTypedArray())
-            savedPosts.addAll(localDataSource.fetchPostsList().map { it.toPost() })
+            val remotePosts = remotePostDataSource.fetchPostsList()
+
+            val postsEntities = remotePosts.map { PostEntity(it.userId, it.id, it.title, it.body) }
+            localDataSource.savePost(*postsEntities.toTypedArray())
+
+            savedPosts.addAll(remotePosts.map { it.toPost() })
         }
 
         return savedPosts.toList()

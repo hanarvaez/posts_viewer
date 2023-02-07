@@ -25,4 +25,6 @@ interface LocalDataSource {
     suspend fun fetchCompany(companyName: String): CompanyEntity
 
     suspend fun fetchPostComments(postId: Int): List<CommentEntity>
+
+    suspend fun saveComment(vararg post: CommentEntity)
 }

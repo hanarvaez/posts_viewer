@@ -2,6 +2,7 @@ package co.com.monkeymobile.post_viewer.data.source.local.impl
 
 import co.com.monkeymobile.post_viewer.data.AppDatabase
 import co.com.monkeymobile.post_viewer.data.source.local.LocalDataSource
+import co.com.monkeymobile.post_viewer.data.source.local.entities.CommentEntity
 import co.com.monkeymobile.post_viewer.data.source.local.entities.PostEntity
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -32,4 +33,6 @@ class LocalDataSourceImpl @Inject constructor(private val appDatabase: AppDataba
 
     override suspend fun fetchPostComments(postId: Int) =
         appDatabase.commentDao().getCommentsWithPostId(postId)
+
+    override suspend fun saveComment(vararg comment: CommentEntity) = appDatabase.commentDao().insertComment(*comment)
 }

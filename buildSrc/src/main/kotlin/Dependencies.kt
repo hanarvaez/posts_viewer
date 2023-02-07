@@ -24,6 +24,7 @@ object Versions {
     const val hiltCompilerVersion = "1.0.0"
     const val retrofitVersion = "2.9.0"
     const val loggingInterceptorVersion = "4.10.0"
+    const val roomVersion = "2.5.0"
 }
 
 object Dependencies {
@@ -68,4 +69,9 @@ object Dependencies {
 
     // Http Logging Interceptor
     const val httpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptorVersion}"
+
+    // Room Database
+    const val roomRuntime = "androidx.room:room-runtime:${Versions.roomVersion}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.roomVersion}"
 }

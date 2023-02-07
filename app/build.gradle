@@ -62,6 +62,10 @@ dependencies {
     implementation(Dependencies.retrofit)
     implementation(Dependencies.retrofitConverterGson)
     implementation(Dependencies.httpLoggingInterceptor)
+    implementation(Dependencies.roomRuntime)
+    annotationProcessor(Dependencies.roomCompiler)
+    kapt(Dependencies.roomCompiler)
+    implementation(Dependencies.roomKtx)
 }
 
 kapt {

@@ -39,7 +39,7 @@ class PostDetailActivity : AppCompatActivity() {
 
         addFragment(binding.postDetailFragmentContainer.id, PostDetailFragment.newInstance(postId))
         addFragment(binding.userDetailFragmentContainer.id, UserDetailsFragment.newInstance(userId))
-        addFragment(binding.commentsListFragmentContainer.id, CommentsListFragment.newInstance(userId))
+        addFragment(binding.commentsListFragmentContainer.id, CommentsListFragment.newInstance(postId))
     }
 
     private fun addFragment(containerId: Int, fragment: Fragment) {

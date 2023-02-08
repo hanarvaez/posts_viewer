@@ -3,8 +3,11 @@ package co.com.monkeymobile.post_viewer.presentation.post_list
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
+import co.com.monkeymobile.post_viewer.R
 import co.com.monkeymobile.post_viewer.databinding.ActivityPostListBinding
 import co.com.monkeymobile.post_viewer.domain.model.Post
 import co.com.monkeymobile.post_viewer.presentation.BaseActivity
@@ -28,6 +31,20 @@ class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, Post
         binding = ActivityPostListBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val menuInflater = menuInflater
+        menuInflater.inflate(R.menu.menu_items, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.refreshFromServer -> {}
+            R.id.deleteAllExceptFavorites -> {}
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun buildState(state: PostListViewState) {

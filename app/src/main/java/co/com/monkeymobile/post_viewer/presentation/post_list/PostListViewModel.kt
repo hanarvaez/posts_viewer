@@ -26,6 +26,7 @@ class PostListViewModel @Inject constructor(
             is PostListViewEvent.Initialize -> initializeEvent()
             is PostListViewEvent.Refresh -> refreshEvent()
             is PostListViewEvent.SwapPostFavoriteState -> swapPostFavoriteStatusEvent(event)
+            is PostListViewEvent.DeletePost -> deletePost(event)
         }
     }
 
@@ -61,5 +62,9 @@ class PostListViewModel @Inject constructor(
                 setState(PostListViewState.Content(emptyList()))
             }
         }
+    }
+
+    private suspend fun deletePost(event: PostListViewEvent.DeletePost) {
+        // setState(PostListViewState.Loading)
     }
 }

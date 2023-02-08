@@ -79,4 +79,8 @@ class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, Post
     override fun swapFavoriteState(post: Post) {
         dispatchEvent(PostListViewEvent.SwapPostFavoriteState(post.id))
     }
+
+    override fun deletePost(post: Post) {
+        dispatchEvent(PostListViewEvent.DeletePost(post.id))
+    }
 }

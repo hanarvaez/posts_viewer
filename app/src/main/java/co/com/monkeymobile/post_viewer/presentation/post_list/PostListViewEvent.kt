@@ -15,4 +15,8 @@ sealed class PostListViewEvent : ViewEvent {
     class SwapPostFavoriteState(val postId: Int) : PostListViewEvent() {
         override fun getName() = "PostList.SwapPostFavoriteState"
     }
+
+    class DeletePost(val postId: Int) : PostListViewEvent() {
+        override fun getName() = "PostList.SwapPostFavoriteState"
+    }
 }

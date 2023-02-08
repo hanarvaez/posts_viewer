@@ -41,7 +41,7 @@ class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, Post
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.refreshFromServer -> {}
+            R.id.refreshFromServer -> forceRefreshFromServer()
             R.id.deleteAllExceptFavorites -> {}
         }
         return super.onOptionsItemSelected(item)
@@ -58,7 +58,7 @@ class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, Post
     private fun buildInitialState() {
         adapter = PostAdapter(this)
         binding.postsRecyclerView.adapter = adapter
-        binding.refreshButton.setOnClickListener { dispatchEvent(PostListViewEvent.Refresh) }
+        binding.refreshButton.setOnClickListener { dispatchEvent(PostListViewEvent.Refresh()) }
 
         dispatchEvent(PostListViewEvent.Initialize)
     }
@@ -99,5 +99,9 @@ class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, Post
 
     override fun deletePost(post: Post) {
         dispatchEvent(PostListViewEvent.DeletePost(post.id))
+    }
+
+    private fun forceRefreshFromServer() {
+        dispatchEvent(PostListViewEvent.Refresh(true))
     }
 }

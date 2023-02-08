@@ -16,15 +16,18 @@ class PostRepositoryImpl @Inject constructor(
     private val remotePostDataSource: PostRemoteDataSource,
 ) : PostRepository {
 
-    override suspend fun fetchPostsList(): List<Post> {
+    override suspend fun fetchPostsList(force: Boolean): List<Post> {
         val savedPosts = localDataSource.fetchPostsList().map { it.toPost() }.toMutableList()
 
-        if (savedPosts.isEmpty()) {
+        if (savedPosts.isEmpty() || force) {
             val remotePosts = remotePostDataSource.fetchPostsList()
 
             val postsEntities = remotePosts.map { PostEntity(it.userId, it.id, it.title, it.body) }
             localDataSource.savePost(*postsEntities.toTypedArray())
 
+            if (force) {
+                savedPosts.clear()
+            }
             savedPosts.addAll(remotePosts.map { it.toPost() })
         }
 

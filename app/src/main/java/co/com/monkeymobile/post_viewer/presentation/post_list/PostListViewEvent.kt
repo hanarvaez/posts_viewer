@@ -8,7 +8,7 @@ sealed class PostListViewEvent : ViewEvent {
         override fun getName() = "PostList.Initialize"
     }
 
-    object Refresh : PostListViewEvent() {
+    class Refresh(val force: Boolean = false) : PostListViewEvent() {
         override fun getName(): String = "PostList.Refresh"
     }
 

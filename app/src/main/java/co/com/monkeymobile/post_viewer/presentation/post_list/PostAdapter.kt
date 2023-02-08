@@ -27,6 +27,8 @@ class PostAdapter(private val listener: PostItemListener) :
         fun onPostClicked(post: Post)
 
         fun swapFavoriteState(post: Post)
+
+        fun deletePost(post: Post)
     }
 
     class PostViewHolder(private val binding: PostAdapterBinding) : ViewHolder(binding.root) {
@@ -51,6 +53,7 @@ class PostAdapter(private val listener: PostItemListener) :
 
             binding.root.setOnClickListener { listener.onPostClicked(post) }
             binding.isFavorite.setOnClickListener { listener.swapFavoriteState(post) }
+            binding.delete.setOnClickListener { listener.deletePost(post) }
         }
     }
 

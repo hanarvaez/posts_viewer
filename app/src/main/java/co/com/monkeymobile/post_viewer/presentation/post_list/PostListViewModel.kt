@@ -1,6 +1,8 @@
 package co.com.monkeymobile.post_viewer.presentation.post_list
 
 import co.com.monkeymobile.post_viewer.di.DefaultDispatcher
+import co.com.monkeymobile.post_viewer.domain.use_case.DeletePostUseCase
+import co.com.monkeymobile.post_viewer.domain.use_case.DeletePostUseCaseParams
 import co.com.monkeymobile.post_viewer.domain.use_case.GetPostListUseCase
 import co.com.monkeymobile.post_viewer.domain.use_case.NoParams
 import co.com.monkeymobile.post_viewer.domain.use_case.Result
@@ -15,6 +17,7 @@ import javax.inject.Inject
 class PostListViewModel @Inject constructor(
     private val getPostListUseCase: GetPostListUseCase,
     private val swapPostFavoriteStateUseCase: SwapPostFavoriteStateUseCase,
+    private val deletePostUseCase: DeletePostUseCase,
     @DefaultDispatcher coroutineDispatcher: CoroutineDispatcher
 ) :
     BaseViewModel<PostListViewState, PostListViewEvent>(coroutineDispatcher) {
@@ -65,6 +68,13 @@ class PostListViewModel @Inject constructor(
     }
 
     private suspend fun deletePost(event: PostListViewEvent.DeletePost) {
-        // setState(PostListViewState.Loading)
+        setState(PostListViewState.Loading)
+        when(val result = deletePostUseCase(DeletePostUseCaseParams(event.postId))){
+            is Result.Success -> fetchPostsList()
+            is Result.Error -> {
+                toastMessage.postValue(result.toString())
+                setState(PostListViewState.Content(emptyList()))
+            }
+        }
     }
 }

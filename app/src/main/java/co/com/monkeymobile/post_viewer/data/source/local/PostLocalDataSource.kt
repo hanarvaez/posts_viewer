@@ -11,4 +11,6 @@ interface PostLocalDataSource {
     suspend fun savePost(vararg post: PostEntity)
 
     suspend fun swapPostFavoriteState(postId: Int)
+
+    suspend fun deletePost(postId: Int)
 }

@@ -9,4 +9,6 @@ interface PostRepository {
     suspend fun fetchPost(postId: Int): Post
 
     suspend fun swapPostfavoriteState(postId: Int)
+
+    suspend fun deletePost(postId: Int)
 }

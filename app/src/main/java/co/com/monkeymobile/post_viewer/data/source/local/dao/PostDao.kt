@@ -23,4 +23,7 @@ interface PostDao {
 
     @Query("UPDATE $POST_TABLE_NAME SET $POST_IS_FAVORITE_COLUMN_NAME = NOT $POST_IS_FAVORITE_COLUMN_NAME WHERE $POST_ID_COLUMN_NAME = :postId")
     fun swapPostFavoriteState(postId: Int)
+
+    @Query("DELETE FROM $POST_TABLE_NAME WHERE $POST_ID_COLUMN_NAME = :postId")
+    fun deletePost(postId: Int)
 }

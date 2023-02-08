@@ -16,4 +16,10 @@ interface CommentDao {
 
     @Query("SELECT * FROM $COMMENT_TABLE_NAME WHERE $COMMENT_POST_ID_COLUMN_NAME = :postId")
     fun getCommentsWithPostId(postId: Int): List<CommentEntity>
+
+    @Query("DELETE FROM $COMMENT_TABLE_NAME WHERE $COMMENT_POST_ID_COLUMN_NAME = :postId")
+    fun deletePostComments(postId: Int)
+
+    @Query("DELETE FROM $COMMENT_TABLE_NAME")
+    fun deleteAllComments()
 }

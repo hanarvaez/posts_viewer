@@ -16,4 +16,8 @@ class CommentLocalDataSourceImpl @Inject constructor(private val appDatabase: Ap
     override suspend fun saveComment(vararg comment: CommentEntity) =
         appDatabase.commentDao().insertComment(*comment)
 
+    override suspend fun deletePostComments(postId: Int) = appDatabase.commentDao().deletePostComments(postId)
+
+    override suspend fun deleteAllComments() = appDatabase.commentDao().deleteAllComments()
+
 }

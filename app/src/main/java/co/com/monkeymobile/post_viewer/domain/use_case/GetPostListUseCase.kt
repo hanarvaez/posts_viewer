@@ -11,12 +11,14 @@ import javax.inject.Inject
 class GetPostListUseCase @Inject constructor(
     private val postRepository: PostRepository,
     @DefaultDispatcher dispatcher: CoroutineDispatcher
-): SuspendUseCase<NoParams, GetPostListUseCaseResult>(dispatcher) {
+): SuspendUseCase<GetPostListUseCaseParams, GetPostListUseCaseResult>(dispatcher) {
 
-    override suspend fun execute(parameters: NoParams): GetPostListUseCaseResult {
-        val posts = postRepository.fetchPostsList()
+    override suspend fun execute(parameters: GetPostListUseCaseParams): GetPostListUseCaseResult {
+        val posts = postRepository.fetchPostsList(parameters.force)
         return GetPostListUseCaseResult(posts)
     }
 }
+
+data class GetPostListUseCaseParams(val force: Boolean)
 
 data class GetPostListUseCaseResult(val posts: List<Post>)

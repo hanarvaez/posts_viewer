@@ -4,6 +4,7 @@ import co.com.monkeymobile.post_viewer.di.DefaultDispatcher
 import co.com.monkeymobile.post_viewer.domain.use_case.DeletePostUseCase
 import co.com.monkeymobile.post_viewer.domain.use_case.DeletePostUseCaseParams
 import co.com.monkeymobile.post_viewer.domain.use_case.GetPostListUseCase
+import co.com.monkeymobile.post_viewer.domain.use_case.GetPostListUseCaseParams
 import co.com.monkeymobile.post_viewer.domain.use_case.NoParams
 import co.com.monkeymobile.post_viewer.domain.use_case.Result
 import co.com.monkeymobile.post_viewer.domain.use_case.SwapPostFavoriteStateUseCase
@@ -26,8 +27,8 @@ class PostListViewModel @Inject constructor(
 
     override suspend fun processEvent(event: PostListViewEvent) {
         when (event) {
-            is PostListViewEvent.Initialize -> initializeEvent()
-            is PostListViewEvent.Refresh -> refreshEvent()
+            PostListViewEvent.Initialize -> initializeEvent()
+            is PostListViewEvent.Refresh -> refreshEvent(event)
             is PostListViewEvent.SwapPostFavoriteState -> swapPostFavoriteStatusEvent(event)
             is PostListViewEvent.DeletePost -> deletePost(event)
         }
@@ -37,14 +38,14 @@ class PostListViewModel @Inject constructor(
         fetchPostsList()
     }
 
-    private suspend fun refreshEvent() {
-        fetchPostsList()
+    private suspend fun refreshEvent(event: PostListViewEvent.Refresh) {
+        fetchPostsList(event.force)
     }
 
-    private suspend fun fetchPostsList() {
+    private suspend fun fetchPostsList(force: Boolean = false) {
         setState(PostListViewState.Loading)
 
-        when (val result = getPostListUseCase(NoParams)) {
+        when (val result = getPostListUseCase(GetPostListUseCaseParams(force))) {
             is Result.Success -> setState(PostListViewState.Content(result.data.posts))
 
             is Result.Error -> {

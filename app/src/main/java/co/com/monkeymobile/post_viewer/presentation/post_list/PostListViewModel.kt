@@ -1,6 +1,7 @@
 package co.com.monkeymobile.post_viewer.presentation.post_list
 
 import co.com.monkeymobile.post_viewer.di.DefaultDispatcher
+import co.com.monkeymobile.post_viewer.domain.use_case.DeleteAllPostsExceptFavoritesUseCase
 import co.com.monkeymobile.post_viewer.domain.use_case.DeletePostUseCase
 import co.com.monkeymobile.post_viewer.domain.use_case.DeletePostUseCaseParams
 import co.com.monkeymobile.post_viewer.domain.use_case.GetPostListUseCase
@@ -19,6 +20,7 @@ class PostListViewModel @Inject constructor(
     private val getPostListUseCase: GetPostListUseCase,
     private val swapPostFavoriteStateUseCase: SwapPostFavoriteStateUseCase,
     private val deletePostUseCase: DeletePostUseCase,
+    private val deleteAllPostsExceptFavoritesUseCase: DeleteAllPostsExceptFavoritesUseCase,
     @DefaultDispatcher coroutineDispatcher: CoroutineDispatcher
 ) :
     BaseViewModel<PostListViewState, PostListViewEvent>(coroutineDispatcher) {
@@ -31,6 +33,7 @@ class PostListViewModel @Inject constructor(
             is PostListViewEvent.Refresh -> refreshEvent(event)
             is PostListViewEvent.SwapPostFavoriteState -> swapPostFavoriteStatusEvent(event)
             is PostListViewEvent.DeletePost -> deletePost(event)
+            PostListViewEvent.DeleteAllPostsExceptFavorites -> deleteAllPostsExceptFavorites()
         }
     }
 
@@ -70,7 +73,18 @@ class PostListViewModel @Inject constructor(
 
     private suspend fun deletePost(event: PostListViewEvent.DeletePost) {
         setState(PostListViewState.Loading)
-        when(val result = deletePostUseCase(DeletePostUseCaseParams(event.postId))){
+        when (val result = deletePostUseCase(DeletePostUseCaseParams(event.postId))) {
+            is Result.Success -> fetchPostsList()
+            is Result.Error -> {
+                toastMessage.postValue(result.toString())
+                setState(PostListViewState.Content(emptyList()))
+            }
+        }
+    }
+
+    private suspend fun deleteAllPostsExceptFavorites() {
+        setState(PostListViewState.Loading)
+        when (val result = deleteAllPostsExceptFavoritesUseCase(NoParams)) {
             is Result.Success -> fetchPostsList()
             is Result.Error -> {
                 toastMessage.postValue(result.toString())

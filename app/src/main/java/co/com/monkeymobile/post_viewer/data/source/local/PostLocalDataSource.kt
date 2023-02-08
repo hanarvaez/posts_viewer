@@ -13,4 +13,6 @@ interface PostLocalDataSource {
     suspend fun swapPostFavoriteState(postId: Int)
 
     suspend fun deletePost(postId: Int)
+
+    suspend fun deleteAllExceptFavorites()
 }

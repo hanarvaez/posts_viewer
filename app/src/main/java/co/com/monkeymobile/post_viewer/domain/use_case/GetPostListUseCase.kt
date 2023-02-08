@@ -14,11 +14,11 @@ class GetPostListUseCase @Inject constructor(
 ): SuspendUseCase<GetPostListUseCaseParams, GetPostListUseCaseResult>(dispatcher) {
 
     override suspend fun execute(parameters: GetPostListUseCaseParams): GetPostListUseCaseResult {
-        val posts = postRepository.fetchPostsList(parameters.force)
+        val posts = postRepository.fetchPostsList(parameters.forceRemote)
         return GetPostListUseCaseResult(posts)
     }
 }
 
-data class GetPostListUseCaseParams(val force: Boolean)
+data class GetPostListUseCaseParams(val forceRemote: Boolean)
 
 data class GetPostListUseCaseResult(val posts: List<Post>)

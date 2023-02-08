@@ -50,12 +50,12 @@ class PostListViewModel @Inject constructor(
         fetchPostsList(event.force)
     }
 
-    private suspend fun fetchPostsList(force: Boolean = false) {
+    private suspend fun fetchPostsList(forceRemote: Boolean = false) {
         setState(PostListViewState.Loading)
 
-        when (val result = getPostListUseCase(GetPostListUseCaseParams(force))) {
+        when (val result = getPostListUseCase(GetPostListUseCaseParams(forceRemote))) {
             is Result.Success -> {
-                if (force) {
+                if (forceRemote) {
                     deleteAllCommentsUseCase(NoParams)
                 }
                 setState(PostListViewState.Content(result.data.posts))

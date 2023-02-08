@@ -11,4 +11,6 @@ interface PostRepository {
     suspend fun swapPostfavoriteState(postId: Int)
 
     suspend fun deletePost(postId: Int)
+
+    suspend fun deleteAllExceptFavorites()
 }

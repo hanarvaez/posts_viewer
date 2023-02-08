@@ -42,7 +42,7 @@ class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, Post
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.refreshFromServer -> forceRefreshFromServer()
-            R.id.deleteAllExceptFavorites -> {}
+            R.id.deleteAllExceptFavorites -> deleteAllPostsExceptFavorites()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -103,5 +103,9 @@ class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, Post
 
     private fun forceRefreshFromServer() {
         dispatchEvent(PostListViewEvent.Refresh(true))
+    }
+
+    private fun deleteAllPostsExceptFavorites() {
+        dispatchEvent(PostListViewEvent.DeleteAllPostsExceptFavorites)
     }
 }

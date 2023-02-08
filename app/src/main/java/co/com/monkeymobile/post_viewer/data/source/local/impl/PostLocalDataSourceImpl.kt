@@ -19,4 +19,6 @@ class PostLocalDataSourceImpl @Inject constructor(private val appDatabase: AppDa
     override suspend fun swapPostFavoriteState(postId: Int) = appDatabase.postDao().swapPostFavoriteState(postId)
 
     override suspend fun deletePost(postId: Int) = appDatabase.postDao().deletePost(postId)
+
+    override suspend fun deleteAllExceptFavorites() = appDatabase.postDao().deleteAllExceptFavorites()
 }

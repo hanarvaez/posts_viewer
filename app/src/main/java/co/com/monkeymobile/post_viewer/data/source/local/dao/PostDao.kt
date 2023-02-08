@@ -26,4 +26,7 @@ interface PostDao {
 
     @Query("DELETE FROM $POST_TABLE_NAME WHERE $POST_ID_COLUMN_NAME = :postId")
     fun deletePost(postId: Int)
+
+    @Query("DELETE FROM $POST_TABLE_NAME WHERE $POST_IS_FAVORITE_COLUMN_NAME = 0")
+    fun deleteAllExceptFavorites()
 }

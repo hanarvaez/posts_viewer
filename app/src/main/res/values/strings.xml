@@ -18,4 +18,5 @@
     <string name="text_comments">Comments</string>
     <string name="menu_force_refresh">Refresh all (from server)</string>
     <string name="menu_delete_all_except_favorites">Delete all (except favorites)</string>
+    <string name="text_user_address_placeholders">%s, %s, %s</string>
 </resources>

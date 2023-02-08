@@ -10,7 +10,7 @@ import co.com.monkeymobile.post_viewer.util.launchSafe
 import kotlinx.coroutines.CoroutineDispatcher
 
 abstract class BaseViewModel<State : ViewState, Event : ViewEvent>(
-    protected val coroutineDispatcher: CoroutineDispatcher
+    private val coroutineDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     val state: MutableLiveData<State> = MutableLiveData()

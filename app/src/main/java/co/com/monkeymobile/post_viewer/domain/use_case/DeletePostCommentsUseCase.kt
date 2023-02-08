@@ -1,10 +1,10 @@
-package co.com.monkeymobile.post_viewer.domain.use_case;
+package co.com.monkeymobile.post_viewer.domain.use_case
 
-import javax.inject.Inject;
+import javax.inject.Inject
 
-import co.com.monkeymobile.post_viewer.di.DefaultDispatcher;
+import co.com.monkeymobile.post_viewer.di.DefaultDispatcher
 import co.com.monkeymobile.post_viewer.domain.repository.CommentRepository
-import dagger.hilt.android.scopes.ViewModelScoped;
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.CoroutineDispatcher
 
 @ViewModelScoped

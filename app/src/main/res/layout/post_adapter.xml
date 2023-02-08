@@ -11,13 +11,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="5dp"
         android:textAlignment="center"
         android:textSize="15sp"
-        app:layout_constraintEnd_toStartOf="@+id/isFavorite"
+        app:layout_constraintEnd_toStartOf="@+id/delete"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="sunt aut facere repellat provident occaecati excepturi optio reprehenderit" />
+
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="15dp"
+        app:tint="@android:color/black"
+        android:src="@android:drawable/ic_menu_delete"
+        app:layout_constraintBottom_toBottomOf="@+id/postTitle"
+        app:layout_constraintEnd_toStartOf="@+id/isFavorite"
+        app:layout_constraintTop_toTopOf="@+id/postTitle" />
 
     <ImageView
         android:id="@+id/isFavorite"
@@ -25,9 +35,9 @@
         android:layout_height="25dp"
         android:layout_marginEnd="5dp"
         android:src="@drawable/unfilled_star"
-        app:layout_constraintBottom_toBottomOf="@+id/postTitle"
+        app:layout_constraintBottom_toBottomOf="@+id/delete"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/postTitle" />
+        app:layout_constraintTop_toTopOf="@+id/delete" />
 
     <View
         android:id="@+id/line"

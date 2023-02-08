@@ -32,4 +32,8 @@ class CommentRepositoryImpl @Inject constructor(
 
         return localComments.toList()
     }
+
+    override suspend fun deletePostComments(postId: Int) = localDataSource.deletePostComments(postId)
+
+    override suspend fun deleteAllComments() = localDataSource.deleteAllComments()
 }

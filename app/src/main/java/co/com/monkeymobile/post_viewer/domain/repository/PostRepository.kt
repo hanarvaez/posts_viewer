@@ -4,7 +4,7 @@ import co.com.monkeymobile.post_viewer.domain.model.Post
 
 interface PostRepository {
 
-    suspend fun fetchPostsList(force: Boolean): List<Post>
+    suspend fun fetchPostsList(forceRemote: Boolean): List<Post>
 
     suspend fun fetchPost(postId: Int): Post
 

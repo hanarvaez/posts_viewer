@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import co.com.monkeymobile.post_viewer.R
 import co.com.monkeymobile.post_viewer.databinding.FragmentUserDetailsBinding
 import co.com.monkeymobile.post_viewer.presentation.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -92,8 +93,12 @@ class UserDetailsFragment :
             email.visibility = View.VISIBLE
             email.text = state.user.email
             address.visibility = View.VISIBLE
-            address.text =
-                "${state.user.address.city}, ${state.user.address.street}, ${state.user.address.suite}"
+            address.text = getString(
+                R.string.text_user_address_placeholders,
+                state.user.address.city,
+                state.user.address.street,
+                state.user.address.suite
+            )
             zipCode.visibility = View.VISIBLE
             zipCode.text = state.user.address.zipcode
             phone.visibility = View.VISIBLE

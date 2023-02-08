@@ -20,8 +20,6 @@ class PostDetailViewModel @Inject constructor(
     override suspend fun processEvent(event: PostDetailViewEvent) {
         when (event) {
             is PostDetailViewEvent.Initialize -> initializeEvent(event)
-            is PostDetailViewEvent.MarkPostAsFavorite -> markPostAsFavoriteEvent(event)
-            is PostDetailViewEvent.UnmarkPostAsFavorite -> unmarkPostAsFavoriteEvent(event)
         }
     }
 
@@ -32,8 +30,4 @@ class PostDetailViewModel @Inject constructor(
             is Result.Error -> setState(PostDetailViewState.Error)
         }
     }
-
-    private suspend fun markPostAsFavoriteEvent(event: PostDetailViewEvent.MarkPostAsFavorite) {}
-
-    private suspend fun unmarkPostAsFavoriteEvent(event: PostDetailViewEvent.UnmarkPostAsFavorite) {}
 }

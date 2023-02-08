@@ -89,23 +89,13 @@ class PostListActivity : BaseActivity<PostListViewModel, PostListViewState, Post
         adapter.submitList(state.posts)
     }
 
-    override fun onPostClicked(post: Post) {
-        startActivity(PostDetailActivity.getIntent(this, post.id, post.userId))
-    }
+    override fun onPostClicked(post: Post) = startActivity(PostDetailActivity.getIntent(this, post.id, post.userId))
 
-    override fun swapFavoriteState(post: Post) {
-        dispatchEvent(PostListViewEvent.SwapPostFavoriteState(post.id))
-    }
+    override fun swapFavoriteState(post: Post) = dispatchEvent(PostListViewEvent.SwapPostFavoriteState(post.id))
 
-    override fun deletePost(post: Post) {
-        dispatchEvent(PostListViewEvent.DeletePost(post.id))
-    }
+    override fun deletePost(post: Post) = dispatchEvent(PostListViewEvent.DeletePost(post.id))
 
-    private fun forceRefreshFromServer() {
-        dispatchEvent(PostListViewEvent.Refresh(true))
-    }
+    private fun forceRefreshFromServer() = dispatchEvent(PostListViewEvent.Refresh(true))
 
-    private fun deleteAllPostsExceptFavorites() {
-        dispatchEvent(PostListViewEvent.DeleteAllPostsExceptFavorites)
-    }
+    private fun deleteAllPostsExceptFavorites() = dispatchEvent(PostListViewEvent.DeleteAllPostsExceptFavorites)
 }

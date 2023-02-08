@@ -1,7 +1,10 @@
 package co.com.monkeymobile.post_viewer.presentation.post_list
 
 import co.com.monkeymobile.post_viewer.di.DefaultDispatcher
+import co.com.monkeymobile.post_viewer.domain.use_case.DeleteAllCommentsUseCase
 import co.com.monkeymobile.post_viewer.domain.use_case.DeleteAllPostsExceptFavoritesUseCase
+import co.com.monkeymobile.post_viewer.domain.use_case.DeletePostCommentsUseCase
+import co.com.monkeymobile.post_viewer.domain.use_case.DeletePostCommentsUseCaseParams
 import co.com.monkeymobile.post_viewer.domain.use_case.DeletePostUseCase
 import co.com.monkeymobile.post_viewer.domain.use_case.DeletePostUseCaseParams
 import co.com.monkeymobile.post_viewer.domain.use_case.GetPostListUseCase
@@ -21,6 +24,8 @@ class PostListViewModel @Inject constructor(
     private val swapPostFavoriteStateUseCase: SwapPostFavoriteStateUseCase,
     private val deletePostUseCase: DeletePostUseCase,
     private val deleteAllPostsExceptFavoritesUseCase: DeleteAllPostsExceptFavoritesUseCase,
+    private val deletePostCommentsUseCase: DeletePostCommentsUseCase,
+    private val deleteAllCommentsUseCase: DeleteAllCommentsUseCase,
     @DefaultDispatcher coroutineDispatcher: CoroutineDispatcher
 ) :
     BaseViewModel<PostListViewState, PostListViewEvent>(coroutineDispatcher) {
@@ -45,11 +50,16 @@ class PostListViewModel @Inject constructor(
         fetchPostsList(event.force)
     }
 
-    private suspend fun fetchPostsList(force: Boolean = false) {
+    private suspend fun fetchPostsList(forceRemote: Boolean = false) {
         setState(PostListViewState.Loading)
 
-        when (val result = getPostListUseCase(GetPostListUseCaseParams(force))) {
-            is Result.Success -> setState(PostListViewState.Content(result.data.posts))
+        when (val result = getPostListUseCase(GetPostListUseCaseParams(forceRemote))) {
+            is Result.Success -> {
+                if (forceRemote) {
+                    deleteAllCommentsUseCase(NoParams)
+                }
+                setState(PostListViewState.Content(result.data.posts))
+            }
 
             is Result.Error -> {
                 toastMessage.postValue(result.toString())
@@ -74,7 +84,10 @@ class PostListViewModel @Inject constructor(
     private suspend fun deletePost(event: PostListViewEvent.DeletePost) {
         setState(PostListViewState.Loading)
         when (val result = deletePostUseCase(DeletePostUseCaseParams(event.postId))) {
-            is Result.Success -> fetchPostsList()
+            is Result.Success -> {
+                deletePostCommentsUseCase(DeletePostCommentsUseCaseParams(event.postId))
+                fetchPostsList()
+            }
             is Result.Error -> {
                 toastMessage.postValue(result.toString())
                 setState(PostListViewState.Content(emptyList()))

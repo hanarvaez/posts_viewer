@@ -7,4 +7,8 @@ interface CommentLocalDataSource {
     suspend fun fetchPostComments(postId: Int): List<CommentEntity>
 
     suspend fun saveComment(vararg comment: CommentEntity)
+
+    suspend fun deletePostComments(postId: Int)
+
+    suspend fun deleteAllComments()
 }

@@ -26,12 +26,15 @@ You need to have installed an android emulator with API 26 or higher.
 This app uses MVI, clean architecture and repository pattern as shown next:
 
 ![MVI](https://miro.medium.com/max/1400/0*5xaFEBxI6_zK6Xmn.webp)
+
 Figure 1. MVI
 
 ![Clean architecture](https://i.stack.imgur.com/FwHET.jpg)
+
 Figure 2. Clean architecture
 
 ![Repository pattern](https://i.stack.imgur.com/CMJFn.png)
+
 Figure 3. Repository pattern
 
 

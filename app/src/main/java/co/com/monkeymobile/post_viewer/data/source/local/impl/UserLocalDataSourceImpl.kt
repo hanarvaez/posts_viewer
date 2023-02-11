@@ -13,6 +13,7 @@ class UserLocalDataSourceImpl @Inject constructor(private val appDatabase: AppDa
     UserLocalDataSource {
 
     override suspend fun fetchUser(userId: Int) = appDatabase.userDao().getUser(userId)
+
     override suspend fun saveUser(userEntity: UserEntity) =
         appDatabase.userDao().insertUser(userEntity)
 
@@ -27,4 +28,10 @@ class UserLocalDataSourceImpl @Inject constructor(private val appDatabase: AppDa
 
     override suspend fun saveCompany(companyEntity: CompanyEntity) =
         appDatabase.companyDao().insertCompany(companyEntity)
+
+    override suspend fun deleteAllUsers() = appDatabase.userDao().deleteAllUsers()
+
+    override suspend fun deleteAllAddress() = appDatabase.addressDao().deleteAllAddress()
+
+    override suspend fun deleteAllCompanies() = appDatabase.companyDao().deleteAllCompanies()
 }

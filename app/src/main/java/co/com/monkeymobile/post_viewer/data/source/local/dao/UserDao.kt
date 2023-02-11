@@ -8,6 +8,7 @@ import co.com.monkeymobile.post_viewer.data.source.local.entities.ADDRESS_LAT_CO
 import co.com.monkeymobile.post_viewer.data.source.local.entities.ADDRESS_LNG_COLUMN_NAME
 import co.com.monkeymobile.post_viewer.data.source.local.entities.ADDRESS_TABLE_NAME
 import co.com.monkeymobile.post_viewer.data.source.local.entities.AddressEntity
+import co.com.monkeymobile.post_viewer.data.source.local.entities.COMMENT_TABLE_NAME
 import co.com.monkeymobile.post_viewer.data.source.local.entities.COMPANY_NAME_COLUMN_NAME
 import co.com.monkeymobile.post_viewer.data.source.local.entities.COMPANY_TABLE_NAME
 import co.com.monkeymobile.post_viewer.data.source.local.entities.CompanyEntity
@@ -23,6 +24,9 @@ interface UserDao {
 
     @Query("SELECT * FROM $USER_TABLE_NAME WHERE $USER_ID_COLUMN_NAME = :userId")
     fun getUser(userId: Int): List<UserEntity>
+
+    @Query("DELETE FROM $USER_TABLE_NAME")
+    fun deleteAllUsers()
 }
 
 @Dao
@@ -33,6 +37,9 @@ interface AddressDao {
 
     @Query("SELECT * FROM $ADDRESS_TABLE_NAME WHERE $ADDRESS_LAT_COLUMN_NAME = :latitude AND $ADDRESS_LNG_COLUMN_NAME = :longitude")
     fun getAddress(latitude: String, longitude: String): AddressEntity
+
+    @Query("DELETE FROM $ADDRESS_TABLE_NAME")
+    fun deleteAllAddress()
 }
 
 @Dao
@@ -43,4 +50,7 @@ interface CompanyDao {
 
     @Query("SELECT * FROM $COMPANY_TABLE_NAME WHERE $COMPANY_NAME_COLUMN_NAME = :companyName")
     fun getCompany(companyName: String): CompanyEntity
+
+    @Query("DELETE FROM $COMMENT_TABLE_NAME")
+    fun deleteAllCompanies()
 }

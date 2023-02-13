@@ -70,4 +70,12 @@ class UserRepositoryImpl @Inject constructor(
             return userEntity.toUser(addressEntity.toAddress(), companyEntity.toCompany())
         }
     }
+
+    override suspend fun deleteAllUsers() {
+        with(localDataSource) {
+            deleteAllCompanies()
+            deleteAllAddress()
+            deleteAllUsers()
+        }
+    }
 }

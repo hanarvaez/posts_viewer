@@ -17,4 +17,10 @@ interface UserLocalDataSource {
     suspend fun fetchCompany(companyName: String): CompanyEntity
 
     suspend fun saveCompany(companyEntity: CompanyEntity)
+
+    suspend fun deleteAllUsers()
+
+    suspend fun deleteAllAddress()
+
+    suspend fun deleteAllCompanies()
 }

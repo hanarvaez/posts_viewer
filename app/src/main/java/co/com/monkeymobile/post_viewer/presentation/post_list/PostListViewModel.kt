@@ -3,6 +3,7 @@ package co.com.monkeymobile.post_viewer.presentation.post_list
 import co.com.monkeymobile.post_viewer.di.DefaultDispatcher
 import co.com.monkeymobile.post_viewer.domain.use_case.DeleteAllCommentsUseCase
 import co.com.monkeymobile.post_viewer.domain.use_case.DeleteAllPostsExceptFavoritesUseCase
+import co.com.monkeymobile.post_viewer.domain.use_case.DeleteAllUsersUseCase
 import co.com.monkeymobile.post_viewer.domain.use_case.DeletePostCommentsUseCase
 import co.com.monkeymobile.post_viewer.domain.use_case.DeletePostCommentsUseCaseParams
 import co.com.monkeymobile.post_viewer.domain.use_case.DeletePostUseCase
@@ -26,6 +27,7 @@ class PostListViewModel @Inject constructor(
     private val deleteAllPostsExceptFavoritesUseCase: DeleteAllPostsExceptFavoritesUseCase,
     private val deletePostCommentsUseCase: DeletePostCommentsUseCase,
     private val deleteAllCommentsUseCase: DeleteAllCommentsUseCase,
+    private val deleteAllUsersUseCase: DeleteAllUsersUseCase,
     @DefaultDispatcher coroutineDispatcher: CoroutineDispatcher
 ) :
     BaseViewModel<PostListViewState, PostListViewEvent>(coroutineDispatcher) {
@@ -57,6 +59,7 @@ class PostListViewModel @Inject constructor(
             is Result.Success -> {
                 if (forceRemote) {
                     deleteAllCommentsUseCase(NoParams)
+                    deleteAllUsersUseCase(NoParams)
                 }
                 setState(PostListViewState.Content(result.data.posts))
             }

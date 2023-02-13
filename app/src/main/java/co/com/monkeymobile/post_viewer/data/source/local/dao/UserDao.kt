@@ -8,7 +8,6 @@ import co.com.monkeymobile.post_viewer.data.source.local.entities.ADDRESS_LAT_CO
 import co.com.monkeymobile.post_viewer.data.source.local.entities.ADDRESS_LNG_COLUMN_NAME
 import co.com.monkeymobile.post_viewer.data.source.local.entities.ADDRESS_TABLE_NAME
 import co.com.monkeymobile.post_viewer.data.source.local.entities.AddressEntity
-import co.com.monkeymobile.post_viewer.data.source.local.entities.COMMENT_TABLE_NAME
 import co.com.monkeymobile.post_viewer.data.source.local.entities.COMPANY_NAME_COLUMN_NAME
 import co.com.monkeymobile.post_viewer.data.source.local.entities.COMPANY_TABLE_NAME
 import co.com.monkeymobile.post_viewer.data.source.local.entities.CompanyEntity
@@ -51,6 +50,6 @@ interface CompanyDao {
     @Query("SELECT * FROM $COMPANY_TABLE_NAME WHERE $COMPANY_NAME_COLUMN_NAME = :companyName")
     fun getCompany(companyName: String): CompanyEntity
 
-    @Query("DELETE FROM $COMMENT_TABLE_NAME")
+    @Query("DELETE FROM $COMPANY_TABLE_NAME")
     fun deleteAllCompanies()
 }

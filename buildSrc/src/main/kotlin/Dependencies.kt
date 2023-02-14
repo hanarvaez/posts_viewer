@@ -15,7 +15,7 @@ object Versions {
     const val jUnitVersion = "4.13.2"
     const val jUnitExtVersion = "1.1.5"
     const val espressoCoreVersion = "3.5.1"
-    const val coroutinesVersion = "1.6.1"
+    const val coroutinesVersion = "1.6.4"
     const val lifecycleVersion = "2.5.1"
     const val activityKtxVersion = "1.6.1"
     const val fragmentKtxVersion = "1.5.5"
@@ -26,6 +26,10 @@ object Versions {
     const val loggingInterceptorVersion = "4.10.0"
     const val roomVersion = "2.5.0"
     const val glideVersion = "4.14.2"
+    const val mockitoCoreVersion = "5.1.1"
+    const val mockitoKotlinVersion = "4.1.0"
+    const val mockkVersion = "1.13.4"
+    const val coreTestingVersion = "2.1.0"
 }
 
 object Dependencies {
@@ -45,6 +49,11 @@ object Dependencies {
     const val jUnit = "junit:junit:${Versions.jUnitVersion}"
     const val jUnitExt = "androidx.test.ext:junit:${Versions.jUnitExtVersion}"
     const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCoreVersion}"
+    const val mockitoCore =  "org.mockito:mockito-core:${Versions.mockitoCoreVersion}"
+    const val mockitoKotlin =  "org.mockito.kotlin:mockito-kotlin:${Versions.mockitoKotlinVersion}"
+    const val mockk =  "io.mockk:mockk:${Versions.mockkVersion}"
+    const val coreTesting =  "androidx.arch.core:core-testing:${Versions.coreTestingVersion}"
+    const val coroutinesTest =  "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutinesVersion}"
 
     // Coroutines
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesVersion}"
